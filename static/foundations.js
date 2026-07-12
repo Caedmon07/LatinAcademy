@@ -1,18 +1,23 @@
 const lessonData = {
   vowels: [
-    { short: "ă", long: "ā", shortHint: "short a, as in cup", longHint: "long a, as in father" },
-    { short: "ĕ", long: "ē", shortHint: "short e, as in set", longHint: "long e, held clearly" },
-    { short: "ĭ", long: "ī", shortHint: "short i, as in bit", longHint: "long i, as in machine" },
-    { short: "ŏ", long: "ō", shortHint: "short o, as in lot", longHint: "long o, held steadily" },
-    { short: "ŭ", long: "ū", shortHint: "short u, as in put", longHint: "long u, as in rule" }
+    { short: "ă", long: "ā", shortHint: "short a", longHint: "long a",
+      shortAudio: "../assets/audio/latin/short-a.mp3", longAudio: "../assets/audio/latin/long-a.mp3" },
+    { short: "ĕ", long: "ē", shortHint: "short e", longHint: "long e",
+      shortAudio: "../assets/audio/latin/short-e.mp3", longAudio: "../assets/audio/latin/long-e.mp3" },
+    { short: "ĭ", long: "ī", shortHint: "short i", longHint: "long i",
+      shortAudio: "../assets/audio/latin/short-i.mp3", longAudio: "../assets/audio/latin/long-i.mp3" },
+    { short: "ŏ", long: "ō", shortHint: "short o", longHint: "long o",
+      shortAudio: "../assets/audio/latin/short-o.mp3", longAudio: "../assets/audio/latin/long-o.mp3" },
+    { short: "ŭ", long: "ū", shortHint: "short u", longHint: "long u",
+      shortAudio: "../assets/audio/latin/short-u.mp3", longAudio: "../assets/audio/latin/long-u.mp3" }
   ],
   diphthongs: [
-    { text: "ae", hint: "a single gliding sound, similar to eye" },
-    { text: "au", hint: "similar to the sound in now" },
-    { text: "ei", hint: "a smooth e-to-i glide" },
-    { text: "oe", hint: "a rounded two-vowel glide" },
-    { text: "ui", hint: "u and i combined in one syllable" },
-    { text: "eu", hint: "e and u pronounced in one breath" }
+    { text: "ae", example: "Caesar", hint: "a single gliding sound", audio: "../assets/audio/latin/ae-caesar.mp3" },
+    { text: "au", example: "aurum", hint: "a smooth a-to-u glide", audio: "../assets/audio/latin/au-aurum.mp3" },
+    { text: "ei", example: "deinde", hint: "a smooth e-to-i glide", audio: "../assets/audio/latin/ei-deinde.mp3" },
+    { text: "oe", example: "poena", hint: "a rounded two-vowel glide", audio: "../assets/audio/latin/oe-poena.mp3" },
+    { text: "ui", example: "cui", hint: "u and i combined in one syllable", audio: "../assets/audio/latin/ui-cui.mp3" },
+    { text: "eu", example: "heu", hint: "e and u in one breath", audio: "../assets/audio/latin/eu-heu.mp3" }
   ],
   places: {
     britannia: {
@@ -43,20 +48,60 @@ const lessonData = {
   }
 };
 
+const sharedAudio = new Audio();
+
+function playClip(path, label) {
+  sharedAudio.pause();
+  sharedAudio.currentTime = 0;
+  sharedAudio.src = path;
+
+  const status = document.getElementById("audioStatus");
+  if (status) {
+    status.querySelector("strong").textContent = `Playing: ${label}`;
+    status.querySelector("p").textContent = "Synthetic Latin audio model";
+    status.classList.add("playing");
+  }
+
+  sharedAudio.play().catch(() => {
+    if (status) {
+      status.querySelector("strong").textContent = "Audio could not start";
+      status.querySelector("p").textContent = "Check that the site is being run through a local web server.";
+    }
+  });
+
+  sharedAudio.onended = () => {
+    if (status) {
+      status.querySelector("strong").textContent = "Audio ready";
+      status.querySelector("p").textContent = "Select another pronunciation control.";
+      status.classList.remove("playing");
+    }
+  };
+}
+
+document.querySelectorAll("[data-audio]").forEach((button) => {
+  button.addEventListener("click", () => {
+    playClip(button.dataset.audio, button.getAttribute("aria-label") || "Latin audio");
+  });
+});
+
 const vowelGrid = document.getElementById("vowelGrid");
 lessonData.vowels.forEach((vowel) => {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "vowel-card";
-  button.innerHTML = `
+  const card = document.createElement("article");
+  card.className = "vowel-card";
+  card.innerHTML = `
     <span class="vowel-pair"><b>${vowel.short}</b><b>${vowel.long}</b></span>
-    <small>${vowel.shortHint}<br>${vowel.longHint}</small>
-    <span class="play-label">Select to compare</span>
+    <small>${vowel.shortHint} · ${vowel.longHint}</small>
+    <span class="dual-audio">
+      <button type="button" data-vowel-audio="${vowel.shortAudio}" aria-label="Play ${vowel.shortHint}">🔊 ${vowel.short}</button>
+      <button type="button" data-vowel-audio="${vowel.longAudio}" aria-label="Play ${vowel.longHint}">🔊 ${vowel.long}</button>
+    </span>
   `;
-  button.addEventListener("click", () => {
-    alert(`${vowel.short}: ${vowel.shortHint}\n${vowel.long}: ${vowel.longHint}`);
+  card.querySelectorAll("[data-vowel-audio]").forEach((button) => {
+    button.addEventListener("click", () => {
+      playClip(button.dataset.vowelAudio, button.getAttribute("aria-label"));
+    });
   });
-  vowelGrid.appendChild(button);
+  vowelGrid.appendChild(card);
 });
 
 const diphthongGrid = document.getElementById("diphthongGrid");
@@ -66,10 +111,10 @@ lessonData.diphthongs.forEach((sound) => {
   button.className = "sound-card";
   button.innerHTML = `
     <strong>${sound.text}</strong>
-    <small>${sound.hint}</small>
-    <span class="play-label">Select for guidance</span>
+    <small>${sound.example} — ${sound.hint}</small>
+    <span class="play-label">🔊 Play example</span>
   `;
-  button.addEventListener("click", () => alert(`${sound.text}: ${sound.hint}`));
+  button.addEventListener("click", () => playClip(sound.audio, `${sound.text} in ${sound.example}`));
   diphthongGrid.appendChild(button);
 });
 
@@ -87,6 +132,7 @@ document.querySelectorAll(".map-point").forEach((button) => {
 document.querySelector(".word-button").addEventListener("click", () => {
   document.getElementById("stressExplanation").innerHTML =
     "The penultimate syllable <b>se</b> is short, so the stress moves back: a-mā-<b>VIS</b>-se-tis.";
+  playClip("../assets/audio/latin/stress-amavissetis.mp3", "amāvissetis");
 });
 
 const collectibleButton = document.querySelector(".collect-button");
