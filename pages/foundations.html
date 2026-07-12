@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foundations | Latin Academy</title>
+  <link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="../static/foundations.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="Latin Academy home">
+      <span class="brand-mark">LA</span>
+      <span>
+        <strong>Latin Academy</strong>
+        <small>Learn Latin. Explore Rome.</small>
+      </span>
+    </a>
+
+    <nav aria-label="Lesson navigation">
+      <a href="#welcome">Introduction</a>
+      <a href="#empire">Empire</a>
+      <a href="#pronunciation">Pronunciation</a>
+      <a href="#quiz">Quiz</a>
+      <a class="back-link" href="../index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="lesson-shell">
+    <aside class="lesson-sidebar" aria-label="Foundations course progress">
+      <p class="eyebrow">FOUNDATIONS</p>
+      <h1>Welcome to Latin</h1>
+      <p class="lesson-summary">
+        Discover why Latin matters, explore the Roman world and learn the
+        sounds that will support every future lesson.
+      </p>
+
+      <ol class="lesson-steps">
+        <li><a href="#welcome"><span>1</span>Welcome</a></li>
+        <li><a href="#empire"><span>2</span>The Roman world</a></li>
+        <li><a href="#pronunciation"><span>3</span>Vowels</a></li>
+        <li><a href="#diphthongs"><span>4</span>Diphthongs</a></li>
+        <li><a href="#stress"><span>5</span>Stress</a></li>
+        <li><a href="#quiz"><span>6</span>Knowledge check</a></li>
+      </ol>
+
+      <div class="sidebar-progress">
+        <div>
+          <span>Lesson progress</span>
+          <strong id="progressPercent">0%</strong>
+        </div>
+        <div class="progress-track">
+          <span id="progressBar" style="width: 0%"></span>
+        </div>
+      </div>
+    </aside>
+
+    <article class="lesson-content">
+      <section class="lesson-hero" id="welcome" data-section>
+        <p class="eyebrow">LECTIŌ PRĪMA · FIRST LESSON</p>
+        <h2>Salvē! Welcome to Latin.</h2>
+        <p class="lead">
+          Latin began as the language of Rome and spread across a vast empire.
+          It shaped the Romance languages and contributed thousands of words to
+          English, particularly through education, law, government, science and
+          the Church.
+        </p>
+
+        <div class="reason-grid">
+          <article>
+            <span>🧠</span>
+            <h3>Think precisely</h3>
+            <p>Latin develops careful reading, pattern recognition and logical analysis.</p>
+          </article>
+          <article>
+            <span>🗣️</span>
+            <h3>Understand languages</h3>
+            <p>Its vocabulary and grammar illuminate English and modern European languages.</p>
+          </article>
+          <article>
+            <span>🏛️</span>
+            <h3>Enter the Roman world</h3>
+            <p>Read the words behind Roman history, literature, mythology and inscriptions.</p>
+          </article>
+        </div>
+
+        <div class="latin-expression">
+          <span class="expression-label">LATIN EXPRESSION</span>
+          <div>
+            <strong>sine quā nōn</strong>
+            <p>An essential condition: literally, “without which, not”.</p>
+          </div>
+          <button class="collect-button" type="button" data-collectible="sine-qua-non">
+            Collect expression
+          </button>
+        </div>
+      </section>
+
+      <section class="content-section" id="empire" data-section>
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">EXPLORE HISTORY</p>
+            <h2>The Roman world</h2>
+          </div>
+          <span class="lesson-chip">Map activity</span>
+        </div>
+
+        <p>
+          At its greatest extent, the Roman Empire linked Britain, continental
+          Europe, North Africa and the eastern Mediterranean. Select a location
+          to reveal a short historical note.
+        </p>
+
+        <div class="map-layout">
+          <div class="map-stage" role="img" aria-label="Stylised map activity based on the Roman Empire in AD 117">
+            <div class="map-land">
+              <button class="map-point britannia" data-place="britannia" aria-label="Britannia">1</button>
+              <button class="map-point gaul" data-place="gaul" aria-label="Gaul">2</button>
+              <button class="map-point rome" data-place="rome" aria-label="Rome">3</button>
+              <button class="map-point egypt" data-place="egypt" aria-label="Egypt">4</button>
+              <button class="map-point east" data-place="east" aria-label="Eastern provinces">5</button>
+            </div>
+            <p class="map-caption">The Roman Empire near its greatest extent, c. AD 117</p>
+          </div>
+
+          <aside class="map-information" aria-live="polite">
+            <span class="card-label">SELECT A LOCATION</span>
+            <h3 id="placeTitle">Roman Empire</h3>
+            <p id="placeLatin">Imperium Rōmānum</p>
+            <p id="placeDescription">
+              Choose one of the numbered markers to begin exploring.
+            </p>
+          </aside>
+        </div>
+
+        <details class="source-panel">
+          <summary>View the photographed source map</summary>
+          <img src="../assets/source-images/roman-empire-map-page-4.jpg"
+               alt="Photograph of the Roman Empire map on page 4 of the source textbook">
+          <p>
+            This photograph is retained as a private archival reference. The
+            activity above uses an original simplified presentation.
+          </p>
+        </details>
+      </section>
+
+      <section class="content-section" id="pronunciation" data-section>
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">SPEAK WITH CONFIDENCE</p>
+            <h2>Vowel quantity</h2>
+          </div>
+          <span class="lesson-chip">Interactive cards</span>
+        </div>
+
+        <p>
+          Classical Latin distinguishes short and long vowels. A long vowel is
+          commonly marked with a macron. Hold a long vowel for roughly twice as
+          long as its short partner.
+        </p>
+
+        <div class="vowel-grid" id="vowelGrid"></div>
+
+        <div class="tip-box">
+          <strong>Remember</strong>
+          <p>
+            A macron marks length, not stress. The symbols <b>a</b> and
+            <b>ā</b> may occur in differently stressed syllables.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section" id="diphthongs" data-section>
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">TWO VOWELS, ONE SYLLABLE</p>
+            <h2>Diphthongs</h2>
+          </div>
+        </div>
+
+        <p>
+          A diphthong combines two written vowels into one flowing sound. Its
+          syllable is naturally long.
+        </p>
+
+        <div class="sound-grid" id="diphthongGrid"></div>
+      </section>
+
+      <section class="content-section" id="stress" data-section>
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">FIND THE BEAT</p>
+            <h2>Word stress</h2>
+          </div>
+        </div>
+
+        <div class="rule-panel">
+          <div class="rule-number">1</div>
+          <div>
+            <h3>Two syllables</h3>
+            <p>Stress the first syllable: <b>RŌ-ma</b>.</p>
+          </div>
+        </div>
+        <div class="rule-panel">
+          <div class="rule-number">2</div>
+          <div>
+            <h3>Three or more syllables</h3>
+            <p>
+              Stress the penultimate syllable when it is long; otherwise stress
+              the syllable before it.
+            </p>
+          </div>
+        </div>
+
+        <div class="syllable-practice">
+          <p class="card-label">TRY THE PATTERN</p>
+          <button type="button" class="word-button" data-word="amāvissetis">
+            a · mā · vis · se · tis
+          </button>
+          <p id="stressExplanation">
+            Select the word to reveal its stressed syllable.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section quiz-section" id="quiz" data-section>
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">KNOWLEDGE CHECK</p>
+            <h2>Foundations quiz</h2>
+          </div>
+          <span class="lesson-chip">5 questions</span>
+        </div>
+
+        <form id="foundationsQuiz">
+          <fieldset>
+            <legend>1. What does a macron show?</legend>
+            <label><input type="radio" name="q1" value="stress"> The stressed syllable</label>
+            <label><input type="radio" name="q1" value="length"> A long vowel</label>
+            <label><input type="radio" name="q1" value="plural"> A plural noun</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. Which is a diphthong?</legend>
+            <label><input type="radio" name="q2" value="ae"> ae</label>
+            <label><input type="radio" name="q2" value="mm"> mm</label>
+            <label><input type="radio" name="q2" value="st"> st</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. Latin was originally the language of which city?</legend>
+            <label><input type="radio" name="q3" value="athens"> Athens</label>
+            <label><input type="radio" name="q3" value="rome"> Rome</label>
+            <label><input type="radio" name="q3" value="alexandria"> Alexandria</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>4. Which modern language developed directly from Latin?</legend>
+            <label><input type="radio" name="q4" value="italian"> Italian</label>
+            <label><input type="radio" name="q4" value="welsh"> Welsh</label>
+            <label><input type="radio" name="q4" value="german"> German</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>5. In a two-syllable Latin word, where is the stress placed?</legend>
+            <label><input type="radio" name="q5" value="first"> On the first syllable</label>
+            <label><input type="radio" name="q5" value="second"> On the second syllable</label>
+            <label><input type="radio" name="q5" value="neither"> Neither syllable</label>
+          </fieldset>
+
+          <button class="button primary" type="submit">Mark my answers</button>
+        </form>
+
+        <div id="quizResult" class="quiz-result" hidden aria-live="polite"></div>
+      </section>
+
+      <section class="completion-card">
+        <div>
+          <p class="eyebrow">NEXT LESSON</p>
+          <h2>Consonants and reading aloud</h2>
+          <p>
+            Continue building a reliable Classical Latin pronunciation system.
+          </p>
+        </div>
+        <button class="button secondary" type="button" disabled>Coming next</button>
+      </section>
+
+      <details class="source-panel source-gallery">
+        <summary>View all photographed source pages</summary>
+        <div>
+          <img src="../assets/source-images/pronunciation-page-2.jpg" alt="Photographed pronunciation source page 2">
+          <img src="../assets/source-images/pronunciation-page-3.jpg" alt="Photographed pronunciation source page 3">
+          <img src="../assets/source-images/introduction-page-5.jpg" alt="Photographed introduction source page 5">
+        </div>
+      </details>
+    </article>
+  </main>
+
+  <script src="../static/foundations.js"></script>
+</body>
+</html>
