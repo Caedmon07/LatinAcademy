@@ -18,5 +18,12 @@
     4,
     5
   ],
-  "copyright_note": "Source photographs retained for private reference; public lesson text and activities are original summaries and adaptations."
+  "copyright_note": "Source photographs retained for private reference; public lesson text and activities are original summaries and adaptations.",
+  "audio": {
+    "engine": "eSpeak Latin voice",
+    "format": "MP3",
+    "status": "synthetic prototype",
+    "clip_count": 21,
+    "review_required": true
+  }
 }
