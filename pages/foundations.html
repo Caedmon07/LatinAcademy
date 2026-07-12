@@ -58,7 +58,12 @@
     <article class="lesson-content">
       <section class="lesson-hero" id="welcome" data-section>
         <p class="eyebrow">LECTIŌ PRĪMA · FIRST LESSON</p>
-        <h2>Salvē! Welcome to Latin.</h2>
+        <div class="heading-with-audio">
+          <h2>Salvē! Welcome to Latin.</h2>
+          <button class="audio-button large" type="button"
+                  data-audio="../assets/audio/latin/salve.mp3"
+                  aria-label="Play pronunciation of Salvē">🔊 Hear Salvē</button>
+        </div>
         <p class="lead">
           Latin began as the language of Rome and spread across a vast empire.
           It shaped the Romance languages and contributed thousands of words to
@@ -87,7 +92,12 @@
         <div class="latin-expression">
           <span class="expression-label">LATIN EXPRESSION</span>
           <div>
-            <strong>sine quā nōn</strong>
+            <span class="expression-audio-row">
+              <strong>sine quā nōn</strong>
+              <button class="audio-button compact" type="button"
+                      data-audio="../assets/audio/latin/sine-qua-non.mp3"
+                      aria-label="Play pronunciation of sine quā nōn">🔊</button>
+            </span>
             <p>An essential condition: literally, “without which, not”.</p>
           </div>
           <button class="collect-button" type="button" data-collectible="sine-qua-non">
@@ -151,6 +161,15 @@
             <h2>Vowel quantity</h2>
           </div>
           <span class="lesson-chip">Interactive cards</span>
+        </div>
+
+        <div class="audio-notice">
+          <strong>Audio prototype</strong>
+          <p>
+            Select a sound card to hear a synthetic Latin model. These clips
+            are suitable for early practice but should later be reviewed
+            against a chosen Classical Latin pronunciation standard.
+          </p>
         </div>
 
         <p>
@@ -273,6 +292,14 @@
 
         <div id="quizResult" class="quiz-result" hidden aria-live="polite"></div>
       </section>
+
+      <div class="audio-player-status" id="audioStatus" aria-live="polite">
+        <span>🔊</span>
+        <div>
+          <strong>Audio ready</strong>
+          <p>Select any pronunciation control.</p>
+        </div>
+      </div>
 
       <section class="completion-card">
         <div>
