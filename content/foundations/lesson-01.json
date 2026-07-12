@@ -1,0 +1,22 @@
+{
+  "id": "foundations-welcome-pronunciation",
+  "title": "Welcome to Latin",
+  "module": "foundations",
+  "lesson_number": 1,
+  "status": "prototype",
+  "sections": [
+    "introduction",
+    "roman-empire",
+    "vowel-quantity",
+    "diphthongs",
+    "stress",
+    "knowledge-check"
+  ],
+  "source_pages": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "copyright_note": "Source photographs retained for private reference; public lesson text and activities are original summaries and adaptations."
+}
