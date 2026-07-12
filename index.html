@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latin Academy</title>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Latin Academy home">
+      <span class="brand-mark">LA</span>
+      <span>
+        <strong>Latin Academy</strong>
+        <small>Learn Latin. Explore Rome.</small>
+      </span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#courses">Lessons</a>
+      <a href="#activities">Activities</a>
+      <a href="#progress">Progress</a>
+      <button class="profile-button" type="button" aria-label="Open learner profile">
+        DS
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SALVĒ, EXPLORER</p>
+        <h1>Begin your journey through the language and world of Ancient Rome.</h1>
+        <p class="hero-text">
+          Learn pronunciation, vocabulary, grammar and Roman history through
+          interactive lessons, quizzes and family challenges.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#courses">Continue learning</a>
+          <a class="button secondary" href="#activities">Explore activities</a>
+        </div>
+
+        <div class="quick-stats" aria-label="Learner statistics">
+          <div>
+            <strong>0</strong>
+            <span>XP earned</span>
+          </div>
+          <div>
+            <strong>0</strong>
+            <span>Day streak</span>
+          </div>
+          <div>
+            <strong>0%</strong>
+            <span>Foundations complete</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Current learning path">
+        <span class="card-label">CURRENT PATH</span>
+        <div class="roman-emblem">SPQR</div>
+        <h2>Foundations</h2>
+        <p>Discover how Latin sounds, where it was spoken and why it still matters.</p>
+
+        <div class="progress-track" aria-label="Foundations progress">
+          <span style="width: 0%"></span>
+        </div>
+
+        <div class="progress-label">
+          <span>0 of 5 lessons</span>
+          <span>0%</span>
+        </div>
+
+        <a class="lesson-link" href="#courses">
+          Start with: Welcome to Latin
+          <span aria-hidden="true">→</span>
+        </a>
+      </aside>
+    </section>
+
+    <section class="section" id="courses">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR LEARNING PATH</p>
+          <h2>Courses</h2>
+        </div>
+        <p>Work through each stage at your own pace.</p>
+      </div>
+
+      <div class="course-grid">
+        <article class="course-card featured">
+          <div class="course-icon">🏛️</div>
+          <span class="status available">Available now</span>
+          <h3>Foundations</h3>
+          <p>Pronunciation, stress, the Roman Empire and an introduction to Latin.</p>
+          <div class="course-meta">
+            <span>5 lessons</span>
+            <span>Beginner</span>
+          </div>
+          <a href="#" class="card-action">Start course <span>→</span></a>
+        </article>
+
+        <article class="course-card">
+          <div class="course-icon">📜</div>
+          <span class="status locked">Coming next</span>
+          <h3>Latin Book I</h3>
+          <p>Core vocabulary, sentence structure and your first translations.</p>
+          <div class="course-meta">
+            <span>Book course</span>
+            <span>Beginner</span>
+          </div>
+          <button class="card-action disabled" type="button" disabled>Locked</button>
+        </article>
+
+        <article class="course-card">
+          <div class="course-icon">⚔️</div>
+          <span class="status locked">Locked</span>
+          <h3>Latin Book II</h3>
+          <p>Expand your grammar and tackle longer passages with confidence.</p>
+          <div class="course-meta">
+            <span>Book course</span>
+            <span>Intermediate</span>
+          </div>
+          <button class="card-action disabled" type="button" disabled>Locked</button>
+        </article>
+
+        <article class="course-card">
+          <div class="course-icon">🦅</div>
+          <span class="status locked">Locked</span>
+          <h3>Latin Book III</h3>
+          <p>Advanced translation, syntax and preparation for classical texts.</p>
+          <div class="course-meta">
+            <span>Book course</span>
+            <span>Advanced</span>
+          </div>
+          <button class="card-action disabled" type="button" disabled>Locked</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section activity-section" id="activities">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LEARN THROUGH PLAY</p>
+          <h2>Activities</h2>
+        </div>
+        <p>Short challenges for practising between lessons.</p>
+      </div>
+
+      <div class="activity-grid">
+        <article>
+          <span class="activity-symbol">Ā</span>
+          <h3>Pronunciation Lab</h3>
+          <p>Listen to vowels, macrons and diphthongs.</p>
+          <button type="button">Open activity</button>
+        </article>
+
+        <article>
+          <span class="activity-symbol">🗺️</span>
+          <h3>Explore the Empire</h3>
+          <p>Discover Roman provinces on an interactive map.</p>
+          <button type="button">Open activity</button>
+        </article>
+
+        <article>
+          <span class="activity-symbol">🏆</span>
+          <h3>Daily Challenge</h3>
+          <p>Answer five questions and build your streak.</p>
+          <button type="button">Start challenge</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section progress-panel" id="progress">
+      <div>
+        <p class="eyebrow">FAMILY LEARNING</p>
+        <h2>Track every learner</h2>
+        <p>
+          Each family member will have their own progress, quiz scores,
+          vocabulary mastery and achievements.
+        </p>
+      </div>
+
+      <div class="learner-preview">
+        <div class="avatar">DS</div>
+        <div>
+          <strong>Daniel</strong>
+          <span>New learner</span>
+        </div>
+        <button type="button">View profile</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Latin Academy</span>
+    <span>Built for family learning</span>
+  </footer>
+
+  <script src="static/app.js"></script>
+</body>
+</html>
