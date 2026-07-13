@@ -671,3 +671,27 @@
 .audio-player-status.playing {
   border-color: rgba(158,45,43,.45);
 }
+
+.consonant-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:26px; }
+.consonant-card,.minimal-pair-grid article { border:1px solid var(--line); border-radius:16px; padding:20px; background:#fff; }
+.consonant-symbol { width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:var(--roman-red);color:#fff;font-family:Cinzel,serif;font-size:1.5rem;font-weight:700; }
+.consonant-card h3,.minimal-pair-grid h3 { margin:15px 0 7px; }
+.consonant-card p,.minimal-pair-grid p { color:var(--muted);line-height:1.55; }
+.example-row { display:flex;gap:8px;flex-wrap:wrap;margin-top:15px; }
+.audio-example { border:0;border-radius:9px;padding:10px 12px;background:#efe7db;color:var(--ink);font-weight:800;cursor:pointer; }
+.audio-example:hover { background:#e1d5c3; }
+.consonant-notes { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px; }
+.consonant-notes article { padding:16px;border-radius:13px;background:#f5efe5; }
+.consonant-notes strong { font-family:Cinzel,serif;font-size:1.2rem; }
+.consonant-notes p { margin:5px 0 0;color:var(--muted);font-size:.88rem;line-height:1.5; }
+.minimal-pair-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:24px; }
+.pair-label { color:var(--roman-red);letter-spacing:.12em;font-size:.68rem;font-weight:800; }
+.reading-list { display:grid;gap:12px;margin-top:24px; }
+.reading-list article { display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:17px;border:1px solid var(--line);border-radius:14px;background:#fff; }
+.reading-number { width:35px;height:35px;display:grid;place-items:center;border-radius:50%;background:var(--gold);color:#2f2108;font-weight:800; }
+.reading-list h3,.reading-list p { margin:0; }
+.reading-list p { margin-top:4px;color:var(--muted); }
+.self-check { display:grid;gap:10px;margin-top:22px;padding:20px;border-radius:15px;background:#202b36;color:#fff; }
+.self-check label { display:flex;gap:10px;align-items:start; }
+@media (max-width:800px){.consonant-grid,.consonant-notes,.minimal-pair-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:560px){.consonant-grid,.consonant-notes,.minimal-pair-grid{grid-template-columns:1fr;}.reading-list article{grid-template-columns:auto 1fr;}.reading-list .audio-example{grid-column:1/-1;}}

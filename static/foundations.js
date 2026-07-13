@@ -150,7 +150,7 @@ collectibleButton.addEventListener("click", () => {
 document.getElementById("foundationsQuiz").addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
-  const answers = { q1: "length", q2: "ae", q3: "rome", q4: "italian", q5: "first" };
+  const answers = { q1: "length", q2: "ae", q3: "rome", q4: "italian", q5: "first", q6: "hard", q7: "w", q8: "lengthen", q9: "tap" };
   let score = 0;
 
   Object.entries(answers).forEach(([question, answer]) => {
@@ -159,10 +159,10 @@ document.getElementById("foundationsQuiz").addEventListener("submit", (event) =>
 
   const result = document.getElementById("quizResult");
   result.hidden = false;
-  result.className = `quiz-result ${score >= 4 ? "success" : "try-again"}`;
-  result.textContent = score >= 4
-    ? `Excellent — ${score}/5. You have completed the first Foundations lesson.`
-    : `You scored ${score}/5. Review the highlighted lesson sections and try again.`;
+  result.className = `quiz-result ${score >= 7 ? "success" : "try-again"}`;
+  result.textContent = score >= 7
+    ? `Excellent — ${score}/9. You have completed the first Foundations lesson.`
+    : `You scored ${score}/9. Review the highlighted lesson sections and try again.`;
 
   localStorage.setItem("latinAcademy.foundations.quizScore", String(score));
   updateProgress();
@@ -195,3 +195,9 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll("[data-section]").forEach((section) => observer.observe(section));
 updateProgress();
+
+document.querySelectorAll(".audio-example").forEach((button) => {
+  button.addEventListener("click", () => {
+    playClip(button.dataset.audio, button.textContent.trim());
+  });
+});
