@@ -719,3 +719,12 @@
 .map-facts dd { margin:0; color:#fff; font-weight:700; font-size:.82rem; }
 @media (max-width:900px){.accurate-map-layout{grid-template-columns:1fr;}#romanEmpireMap{min-height:0;}}
 @media (max-width:600px){.map-toolbar span{width:100%;margin-left:0;}.map-labels text,.city-layer text{font-size:11px;}}
+
+.dynamic-loading {
+  grid-column: 1 / -1;
+  padding: 18px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  color: var(--muted);
+  background: #faf7f1;
+}

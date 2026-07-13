@@ -1,4 +1,4 @@
-# Latin Academy v0.6
+# Latin Academy v0.6.1
 
 This version contains:
 
@@ -104,3 +104,13 @@ not a survey-grade province-boundary dataset.
 - Added a timeline, root-word examples, language-family comparison, specialist vocabulary and collectible expression
 - Linked the homepage to the Introduction lesson
 - Linked the Introduction lesson to Pronunciation Foundations
+
+
+## v0.6.1 hotfix
+
+- Corrected a JavaScript syntax error introduced during the SVG map merge
+- Restored all audio controls
+- Restored interactive map selection, reset and label controls
+- Restored dynamically generated vowel and diphthong content
+- Added safer optional-element handling and loading fallbacks
+- Verified that all referenced MP3 files are present

@@ -74,6 +74,7 @@ document.querySelectorAll("[data-audio]").forEach((button) => {
 });
 
 const vowelGrid = document.getElementById("vowelGrid");
+if (vowelGrid) vowelGrid.innerHTML = "";
 lessonData.vowels.forEach((vowel) => {
   const card = document.createElement("article");
   card.className = "vowel-card";
@@ -94,6 +95,7 @@ lessonData.vowels.forEach((vowel) => {
 });
 
 const diphthongGrid = document.getElementById("diphthongGrid");
+if (diphthongGrid) diphthongGrid.innerHTML = "";
 lessonData.diphthongs.forEach((sound) => {
   const button = document.createElement("button");
   button.type = "button";
@@ -152,9 +154,8 @@ document.getElementById("toggleLabels")?.addEventListener("click", (event) => {
   event.currentTarget.textContent = hidden ? "Show labels" : "Hide labels";
   event.currentTarget.setAttribute("aria-pressed", String(!hidden));
 });
-});
 
-document.querySelector(".word-button").addEventListener("click", () => {
+document.querySelector(".word-button")?.addEventListener("click", () => {
   document.getElementById("stressExplanation").innerHTML =
     "The penultimate syllable <b>se</b> is short, so the stress moves back: a-mā-<b>VIS</b>-se-tis.";
   playClip("../assets/audio/latin/stress-amavissetis.mp3", "amāvissetis");
@@ -162,17 +163,20 @@ document.querySelector(".word-button").addEventListener("click", () => {
 
 const collectibleButton = document.querySelector(".collect-button");
 const collectionKey = "latinAcademy.collectible.sineQuaNon";
-if (localStorage.getItem(collectionKey) === "collected") {
-  collectibleButton.textContent = "✓ Collected";
-  collectibleButton.classList.add("collected");
+if (collectibleButton) {
+  if (localStorage.getItem(collectionKey) === "collected") {
+    collectibleButton.textContent = "✓ Collected";
+    collectibleButton.classList.add("collected");
+  }
+  collectibleButton.addEventListener("click", () => {
+    localStorage.setItem(collectionKey, "collected");
+    collectibleButton.textContent = "✓ Collected";
+    collectibleButton.classList.add("collected");
+    updateProgress();
+  });
 }
-collectibleButton.addEventListener("click", () => {
-  localStorage.setItem(collectionKey, "collected");
-  collectibleButton.textContent = "✓ Collected";
-  collectibleButton.classList.add("collected");
-});
 
-document.getElementById("foundationsQuiz").addEventListener("submit", (event) => {
+document.getElementById("foundationsQuiz")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
   const answers = { q1: "length", q2: "ae", q3: "rome", q4: "italian", q5: "first", q6: "hard", q7: "w", q8: "lengthen", q9: "tap" };
