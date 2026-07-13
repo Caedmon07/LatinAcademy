@@ -29,5 +29,12 @@
     "clip_count": 37,
     "review_required": true
   },
-  "pronunciation_model": "Restored Classical Latin (introductory approximation)"
+  "pronunciation_model": "Restored Classical Latin (introductory approximation)",
+  "map": {
+    "format": "inline SVG",
+    "period": "AD 117",
+    "scope": "simplified educational reconstruction",
+    "interactive_regions": 10,
+    "interactive_cities": 4
+  }
 }
