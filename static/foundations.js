@@ -20,31 +20,20 @@ const lessonData = {
     { text: "eu", example: "heu", hint: "e and u in one breath", audio: "../assets/audio/latin/eu-heu.mp3" }
   ],
   places: {
-    britannia: {
-      title: "Britannia",
-      latin: "Britannia",
-      description: "Rome began its conquest of Britain in AD 43. Latin became important in administration, the army, trade and the Church."
-    },
-    gaul: {
-      title: "Gaul",
-      latin: "Gallia",
-      description: "Gaul covered much of modern France and neighbouring regions. Spoken Latin there gradually developed into French."
-    },
-    rome: {
-      title: "Rome",
-      latin: "Rōma",
-      description: "Rome was the political and symbolic centre of the empire and the city from which Latin took its prestige."
-    },
-    egypt: {
-      title: "Egypt",
-      latin: "Aegyptus",
-      description: "Egypt was a wealthy province and a major source of grain. Alexandria was one of the ancient Mediterranean's great cities."
-    },
-    east: {
-      title: "Eastern Provinces",
-      latin: "Prōvinciae Orientālēs",
-      description: "Rome's eastern territories connected the Mediterranean world with Greece, Anatolia, Syria and the Near East."
-    }
+    britannia: { title: "Britannia", latin: "Britannia", period: "Province", category: "Region", description: "Rome began the conquest of Britain in AD 43. By Trajan's reign, Roman control covered most of England and Wales, while the northern frontier remained contested." },
+    hispania: { title: "Hispania", latin: "Hispānia", period: "Provinces", category: "Region", description: "The Iberian Peninsula was divided into several Roman provinces. It supplied metals, agricultural products, soldiers and prominent imperial families." },
+    gaul: { title: "Gaul", latin: "Gallia", period: "Provinces", category: "Region", description: "Gaul covered much of modern France, Belgium and neighbouring areas. Spoken Latin there eventually contributed to the development of French." },
+    italia: { title: "Italy", latin: "Italia", period: "Heartland", category: "Region", description: "Italy formed the political and cultural heartland of the empire. Rome remained its symbolic centre and largest city." },
+    graecia: { title: "Greece and the Balkans", latin: "Graecia et Balcania", period: "Provinces", category: "Region", description: "Greek language and culture remained highly influential in the eastern empire. The Balkans also formed a critical military corridor." },
+    asia: { title: "Asia Minor", latin: "Asia Minor", period: "Provinces", category: "Region", description: "Asia Minor contained wealthy cities, major trade routes and several long-established Greek-speaking communities." },
+    africa: { title: "Roman North Africa", latin: "Africa Rōmāna", period: "Provinces", category: "Region", description: "Roman North Africa included fertile agricultural regions and major cities. It became one of the empire's most important grain-producing areas." },
+    aegyptus: { title: "Egypt", latin: "Aegyptus", period: "Imperial province", category: "Region", description: "Egypt was governed as an imperial province. The Nile valley supplied grain, while Alexandria was a major centre of commerce and learning." },
+    syria: { title: "Syria", latin: "Syria", period: "Province", category: "Region", description: "Syria linked the Mediterranean to inland trade routes. Antioch was one of the largest and most important cities in the Roman world." },
+    mesopotamia: { title: "Mesopotamia", latin: "Mesopotamia", period: "Recent conquest", category: "Region", description: "Trajan's eastern campaigns briefly extended Roman power into Mesopotamia. These gains proved difficult to retain after his death." },
+    rome: { title: "Rome", latin: "Rōma", period: "Capital", category: "City", description: "Rome was the empire's political and symbolic capital, the seat of the Senate and the centre of Roman civic identity." },
+    carthage: { title: "Carthage", latin: "Carthāgō", period: "Provincial capital", category: "City", description: "Re-founded as a Roman colony, Carthage became a prosperous administrative and commercial centre in North Africa." },
+    alexandria: { title: "Alexandria", latin: "Alexandria", period: "Major metropolis", category: "City", description: "Alexandria was a major port, intellectual centre and gateway to Egypt's grain supply." },
+    antioch: { title: "Antioch", latin: "Antiochia", period: "Major metropolis", category: "City", description: "Antioch served as a major administrative and military base for Rome's eastern provinces." }
   }
 };
 
@@ -118,15 +107,51 @@ lessonData.diphthongs.forEach((sound) => {
   diphthongGrid.appendChild(button);
 });
 
-document.querySelectorAll(".map-point").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".map-point").forEach((point) => point.classList.remove("active"));
-    button.classList.add("active");
-    const place = lessonData.places[button.dataset.place];
-    document.getElementById("placeTitle").textContent = place.title;
-    document.getElementById("placeLatin").textContent = place.latin;
-    document.getElementById("placeDescription").textContent = place.description;
+function showMapPlace(placeKey, element) {
+  const place = lessonData.places[placeKey];
+  if (!place) return;
+
+  document.querySelectorAll(".map-region, .svg-city").forEach((item) => item.classList.remove("active"));
+  if (element) element.classList.add("active");
+
+  document.getElementById("placeTitle").textContent = place.title;
+  document.getElementById("placeLatin").textContent = place.latin;
+  document.getElementById("placeDescription").textContent = place.description;
+  document.getElementById("placePeriod").textContent = place.period;
+  document.getElementById("placeCategory").textContent = place.category;
+}
+
+document.querySelectorAll(".map-region, .svg-city").forEach((element) => {
+  element.setAttribute("tabindex", "0");
+  element.setAttribute("role", "button");
+
+  element.addEventListener("click", () => showMapPlace(element.dataset.place, element));
+  element.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      showMapPlace(element.dataset.place, element);
+    }
   });
+});
+
+document.getElementById("resetMap")?.addEventListener("click", () => {
+  document.querySelectorAll(".map-region, .svg-city").forEach((item) => item.classList.remove("active"));
+  document.getElementById("placeTitle").textContent = "Roman Empire";
+  document.getElementById("placeLatin").textContent = "Imperium Rōmānum";
+  document.getElementById("placeDescription").textContent =
+    "Select a shaded province or named city to explore the Roman world at the death of Trajan in AD 117.";
+  document.getElementById("placePeriod").textContent = "AD 117";
+  document.getElementById("placeCategory").textContent = "Empire";
+});
+
+document.getElementById("toggleLabels")?.addEventListener("click", (event) => {
+  const labels = document.querySelector(".map-labels");
+  const cities = document.querySelector(".city-layer");
+  const hidden = labels.classList.toggle("labels-hidden");
+  cities.classList.toggle("labels-hidden", hidden);
+  event.currentTarget.textContent = hidden ? "Show labels" : "Hide labels";
+  event.currentTarget.setAttribute("aria-pressed", String(!hidden));
+});
 });
 
 document.querySelector(".word-button").addEventListener("click", () => {
