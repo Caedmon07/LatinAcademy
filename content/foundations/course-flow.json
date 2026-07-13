@@ -1,0 +1,16 @@
+{
+  "course": "Foundations",
+  "ordered_lessons": [
+    {
+      "id": "introduction",
+      "entry": "pages/introduction.html"
+    },
+    {
+      "id": "pronunciation",
+      "entry": "pages/foundations.html",
+      "prerequisite": "introduction completed"
+    }
+  ],
+  "completion": "pronunciation quiz score >= 7",
+  "homepage": "state-aware CTA and journey"
+}

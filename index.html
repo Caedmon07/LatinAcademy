@@ -37,7 +37,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="button primary" href="#courses">Continue learning</a>
+          <a class="button primary" id="primaryLearningCta" href="pages/introduction.html">Start Foundations</a>
           <a class="button secondary" href="#activities">Explore activities</a>
         </div>
 
@@ -68,12 +68,12 @@
         </div>
 
         <div class="progress-label">
-          <span>0 of 5 lessons</span>
-          <span>0%</span>
+          <span id="homeLessonCount">0 of 2 core lessons</span>
+          <span id="homeCoursePercent">0%</span>
         </div>
 
-        <a class="lesson-link" href="#courses">
-          Start with: Welcome to Latin
+        <a class="lesson-link" id="currentLessonLink" href="pages/introduction.html">
+          <span id="currentLessonLabel">Start with: Welcome to Latin</span>
           <span aria-hidden="true">→</span>
         </a>
       </aside>
@@ -135,6 +135,33 @@
             <span>Advanced</span>
           </div>
           <button class="card-action disabled" type="button" disabled>Locked</button>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="section journey-section" id="journey">
+      <div class="section-heading">
+        <div><p class="eyebrow">FOUNDATIONS JOURNEY</p><h2>Your next steps</h2></div>
+        <p>The active learner moves through the course in order, with completion saved automatically.</p>
+      </div>
+      <div class="journey-track">
+        <article class="journey-step" id="journeyIntroduction">
+          <span class="journey-number">1</span>
+          <div><span class="journey-status">Not started</span><h3>Welcome to Latin</h3><p>Why Latin matters, English vocabulary and the Romance languages.</p></div>
+          <a href="pages/introduction.html">Open lesson</a>
+        </article>
+        <div class="journey-connector"></div>
+        <article class="journey-step" id="journeyPronunciation">
+          <span class="journey-number">2</span>
+          <div><span class="journey-status">Locked</span><h3>Pronunciation Foundations</h3><p>Vowels, consonants, stress, reading practice and the final quiz.</p></div>
+          <a href="pages/foundations.html">Open lesson</a>
+        </article>
+        <div class="journey-connector"></div>
+        <article class="journey-step" id="journeyComplete">
+          <span class="journey-number">✓</span>
+          <div><span class="journey-status">Locked</span><h3>Foundations complete</h3><p>Review results and achievements, then prepare for Book I.</p></div>
+          <a href="pages/profiles.html">View progress</a>
         </article>
       </div>
     </section>

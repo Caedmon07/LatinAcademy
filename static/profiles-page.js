@@ -165,8 +165,11 @@ form.addEventListener("submit", (event) => {
 
 document.getElementById("continueLearning").addEventListener("click", () => {
   const profile = LatinProfiles.getActiveProfile();
-  const introCompleted = profile.progress.lessons.introduction?.completed;
-  window.location.href = introCompleted ? "foundations.html" : "introduction.html";
+  const intro = profile.progress.lessons.introduction || {};
+  const pronunciation = profile.progress.lessons.pronunciation || {};
+  if (!intro.completed) window.location.href = "introduction.html";
+  else if (!pronunciation.completed) window.location.href = "foundations.html";
+  else window.location.href = "../index.html#journey";
 });
 
 buildChoices();

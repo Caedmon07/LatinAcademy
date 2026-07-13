@@ -42,7 +42,7 @@ completeButton.addEventListener("click", () => {
     LatinProfiles.awardAchievements(progress);
   });
 
-  window.location.href = "foundations.html";
+  window.location.href = "foundations.html?from=introduction";
 });
 
 document.addEventListener("DOMContentLoaded", refreshIntroduction);

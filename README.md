@@ -1,4 +1,4 @@
-# Latin Academy v0.7
+# Latin Academy v0.8
 
 This version contains:
 
@@ -131,3 +131,13 @@ not a survey-grade province-boundary dataset.
 Profiles currently use browser `localStorage`. They are separate on the same
 browser and device, but they are not yet synchronised between devices or backed
 up to a server. Clearing browser site data will remove them.
+
+
+## v0.8 lesson flow
+
+- State-aware homepage CTA and course journey
+- Ordered Introduction to Pronunciation progression
+- Pronunciation prerequisite gate
+- Breadcrumbs and save-and-return-home controls
+- Course completion card and results route
+- Intelligent Continue Learning behaviour

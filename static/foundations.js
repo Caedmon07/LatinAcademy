@@ -228,6 +228,7 @@ document.getElementById("foundationsQuiz")?.addEventListener("submit", (event) =
     : `You scored ${score}/9. Review the consonant, vowel and stress sections, then try again.`;
 
   updateProgress();
+  renderCompletionFlow();
 });
 
 function updateProgress() {
@@ -289,6 +290,9 @@ document.querySelectorAll("[data-section]").forEach((section) => observer.observ
 
 document.addEventListener("DOMContentLoaded", updateProgress);
 window.addEventListener("latinprofilechanged", updateProgress);
+function enforceLessonOrder(){const p=LatinProfiles.getActiveProfile(),ok=Boolean(p.progress.lessons.introduction?.completed);document.getElementById("lessonGate").hidden=ok;document.getElementById("foundationsLesson").hidden=!ok}
+function renderCompletionFlow(){const p=LatinProfiles.getActiveProfile(),l=p.progress.lessons.pronunciation||{},c=document.getElementById("foundationCompletionCard");if(!c)return;if(l.completed){c.classList.add("course-complete");document.getElementById("completionEyebrow").textContent="FOUNDATIONS COMPLETE";document.getElementById("completionHeading").textContent=`Well done, ${p.name}!`;document.getElementById("completionMessage").textContent=`Your best pronunciation score is ${l.quizScore}/9. Progress and achievements have been saved.`}else{c.classList.remove("course-complete");document.getElementById("completionEyebrow").textContent="COURSE STATUS";document.getElementById("completionHeading").textContent="Complete the quiz to finish Foundations";document.getElementById("completionMessage").textContent="A score of 7 out of 9 completes the pronunciation lesson."}}
+document.addEventListener("DOMContentLoaded",()=>{enforceLessonOrder();renderCompletionFlow();if(new URLSearchParams(location.search).get("from")==="introduction")document.getElementById("pronunciation")?.scrollIntoView({behavior:"smooth"})});window.addEventListener("latinprofilechanged",()=>{enforceLessonOrder();renderCompletionFlow()});
 
 document.querySelectorAll(".audio-example").forEach((button) => {
   button.addEventListener("click", () => {

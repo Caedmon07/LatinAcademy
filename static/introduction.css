@@ -299,3 +299,4 @@ th {
     flex-direction: column;
   }
 }
+.lesson-breadcrumb{display:flex;align-items:center;gap:9px;padding-top:30px;color:var(--muted);font-size:.84rem}.lesson-breadcrumb a{color:var(--roman-red);font-weight:700}.lesson-end-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}

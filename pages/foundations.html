@@ -28,7 +28,12 @@
     </nav>
   </header>
 
-  <main class="lesson-shell">
+  <div class="foundation-topbar">
+    <nav class="lesson-breadcrumb" aria-label="Course breadcrumb"><a href="../index.html">Foundations home</a><span>›</span><a href="introduction.html">Welcome to Latin</a><span>›</span><strong>Pronunciation Foundations</strong></nav>
+    <a class="button secondary compact-home-button" href="../index.html">Save and return home</a>
+  </div>
+  <div class="lesson-gate" id="lessonGate" hidden><div><p class="eyebrow">LESSON LOCKED</p><h1>Complete the introduction first</h1><p>This keeps Foundations in order and records progress correctly.</p><a class="button primary" href="introduction.html">Open Welcome to Latin</a> <a class="button secondary" href="../index.html">Return home</a></div></div>
+  <main class="lesson-shell" id="foundationsLesson">
     <aside class="lesson-sidebar" aria-label="Foundations course progress">
       <p class="eyebrow">FOUNDATIONS</p>
       <h1>Welcome to Latin</h1>
@@ -599,15 +604,9 @@
         </div>
       </div>
 
-      <section class="completion-card">
-        <div>
-          <p class="eyebrow">NEXT LESSON</p>
-          <h2>Consonants and reading aloud</h2>
-          <p>
-            Continue building a reliable Classical Latin pronunciation system.
-          </p>
-        </div>
-        <button class="button secondary" type="button" disabled>Coming next</button>
+      <section class="completion-card" id="foundationCompletionCard">
+        <div><p class="eyebrow" id="completionEyebrow">COURSE STATUS</p><h2 id="completionHeading">Complete the quiz to finish Foundations</h2><p id="completionMessage">A score of 7 out of 9 completes the pronunciation lesson.</p></div>
+        <div class="completion-actions"><a class="button secondary" href="../index.html">Return to homepage</a><a class="button primary" href="profiles.html">View learner results</a></div>
       </section>
 
       <details class="source-panel source-gallery">
