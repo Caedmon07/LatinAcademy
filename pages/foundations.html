@@ -124,25 +124,168 @@
           to reveal a short historical note.
         </p>
 
-        <div class="map-layout">
-          <div class="map-stage" role="img" aria-label="Stylised map activity based on the Roman Empire in AD 117">
-            <div class="map-land">
-              <button class="map-point britannia" data-place="britannia" aria-label="Britannia">1</button>
-              <button class="map-point gaul" data-place="gaul" aria-label="Gaul">2</button>
-              <button class="map-point rome" data-place="rome" aria-label="Rome">3</button>
-              <button class="map-point egypt" data-place="egypt" aria-label="Egypt">4</button>
-              <button class="map-point east" data-place="east" aria-label="Eastern provinces">5</button>
+        <div class="map-layout accurate-map-layout">
+          <div class="svg-map-stage">
+            <svg id="romanEmpireMap" viewBox="0 0 1000 560"
+                 role="img" aria-labelledby="mapTitle mapDescription">
+              <title id="mapTitle">The Roman Empire at the death of Trajan, AD 117</title>
+              <desc id="mapDescription">
+                Simplified educational reconstruction showing Roman territory
+                around the Mediterranean, with selectable regions and cities.
+              </desc>
+
+              <defs>
+                <linearGradient id="seaGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#dceef2"/>
+                  <stop offset="100%" stop-color="#a9d2dc"/>
+                </linearGradient>
+                <filter id="mapShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="5" flood-opacity="0.2"/>
+                </filter>
+              </defs>
+
+              <rect width="1000" height="560" fill="url(#seaGradient)"/>
+
+              <g class="map-landmass" fill="#eee8dc" stroke="#80776a" stroke-width="2">
+                <path d="M90,95 L145,70 L210,75 L250,55 L325,65 L380,50 L445,65
+                         L505,50 L555,65 L620,58 L700,78 L770,92 L835,115 L890,148
+                         L860,185 L810,188 L775,174 L735,185 L690,176 L646,190 L610,180
+                         L575,196 L540,184 L505,204 L475,188 L445,205 L405,192 L365,210
+                         L325,199 L295,218 L260,207 L225,225 L185,210 L145,225 L112,195
+                         L75,185 Z"/>
+                <path d="M135,62 L152,30 L176,35 L188,62 L176,92 L151,102 L130,82 Z"/>
+                <path d="M102,56 L111,37 L128,39 L132,65 L119,84 L103,76 Z"/>
+                <path d="M520,18 L568,5 L625,16 L657,42 L629,61 L585,52 L548,58 Z"/>
+                <path d="M455,205 L478,220 L487,250 L510,278 L500,315 L478,321
+                         L466,292 L449,272 L438,241 Z"/>
+                <path d="M460,338 L505,331 L532,345 L493,359 L462,353 Z"/>
+                <path d="M407,286 L423,276 L432,302 L421,323 L407,316 Z"/>
+                <path d="M414,245 L426,236 L433,257 L423,273 L414,263 Z"/>
+                <path d="M515,210 L565,205 L610,220 L630,250 L608,268 L584,256
+                         L568,279 L548,266 L532,286 L515,270 L530,245 Z"/>
+                <path d="M555,282 L568,300 L558,319 L546,305 Z"/>
+                <path d="M579,278 L592,296 L584,312 L573,296 Z"/>
+                <path d="M620,224 L690,213 L755,226 L798,248 L770,272 L705,276
+                         L650,265 L611,245 Z"/>
+                <path d="M760,276 L788,291 L796,337 L783,382 L764,394 L750,360
+                         L754,320 Z"/>
+                <path d="M795,250 L850,255 L900,280 L917,326 L893,357 L850,345
+                         L817,316 Z"/>
+                <path d="M130,355 L185,330 L250,322 L315,335 L380,326 L445,345
+                         L510,355 L565,350 L625,365 L682,353 L738,365 L765,395
+                         L735,432 L665,445 L590,437 L520,451 L450,441 L380,456
+                         L305,445 L240,460 L177,446 L118,416 Z"/>
+                <path d="M705,374 L758,366 L783,395 L770,445 L747,500 L713,490
+                         L720,442 L700,414 Z"/>
+                <path d="M785,390 L842,398 L885,430 L858,505 L800,520 L760,490 Z"/>
+              </g>
+
+              <g id="empireTerritory" fill="#a52f2d" fill-opacity="0.88"
+                 stroke="#6f1d1b" stroke-width="2.5" filter="url(#mapShadow)">
+                <path d="M137,63 L151,42 L174,44 L181,65 L171,88 L151,96 L136,80 Z"/>
+                <path d="M92,170 L125,120 L185,104 L245,96 L305,101 L354,122
+                         L365,161 L340,193 L300,207 L262,198 L225,216 L181,204
+                         L145,218 L110,190 Z"/>
+                <path d="M330,107 L395,91 L458,97 L520,92 L585,105 L648,102
+                         L702,120 L725,151 L690,176 L646,188 L610,177 L575,194
+                         L540,181 L503,201 L470,185 L437,201 L405,188 L367,207
+                         L337,190 L354,157 Z"/>
+                <path d="M438,192 L466,205 L481,237 L505,278 L498,310 L478,317
+                         L464,288 L447,270 L435,238 Z"/>
+                <path d="M500,194 L565,194 L622,208 L654,236 L630,259 L606,267
+                         L582,252 L566,278 L546,263 L529,283 L510,266 L526,241 Z"/>
+                <path d="M614,211 L691,202 L760,215 L806,243 L773,273 L708,278
+                         L650,266 L609,243 Z"/>
+                <path d="M752,263 L815,243 L873,255 L914,287 L919,326 L891,354
+                         L850,342 L818,314 L795,337 L780,382 L759,391 L747,353 Z"/>
+                <path d="M128,355 L187,329 L247,320 L308,332 L376,322 L444,342
+                         L510,352 L565,347 L626,362 L681,350 L735,361 L758,391
+                         L725,414 L661,420 L596,415 L532,426 L468,417 L403,431
+                         L340,421 L278,432 L214,421 L158,405 L120,382 Z"/>
+                <path d="M704,366 L758,362 L782,393 L770,445 L747,497 L716,487
+                         L720,438 L700,410 Z"/>
+                <path d="M404,282 L421,272 L431,302 L420,321 L407,315 Z"/>
+                <path d="M411,244 L426,234 L432,258 L422,272 L414,262 Z"/>
+                <path d="M460,336 L504,329 L531,344 L493,358 L462,352 Z"/>
+                <path d="M677,295 L704,288 L731,297 L724,312 L691,315 Z"/>
+              </g>
+
+              <g fill="none" stroke="#6da6b4" stroke-width="2" opacity="0.65">
+                <path d="M385,110 C420,125 454,130 487,127 C520,124 555,130 590,142"/>
+                <path d="M747,367 C751,399 750,432 746,487"/>
+              </g>
+
+              <g class="region-layer">
+                <path class="map-region" data-place="britannia" d="M137,63 L151,42 L174,44 L181,65 L171,88 L151,96 L136,80 Z"/>
+                <path class="map-region" data-place="hispania" d="M92,170 L125,124 L188,108 L240,104 L260,142 L244,190 L216,211 L166,207 L122,192 Z"/>
+                <path class="map-region" data-place="gaul" d="M235,103 L307,101 L354,122 L363,160 L340,192 L300,205 L260,196 L244,162 Z"/>
+                <path class="map-region" data-place="italia" d="M438,192 L466,205 L481,237 L505,278 L498,310 L478,317 L464,288 L447,270 L435,238 Z"/>
+                <path class="map-region" data-place="graecia" d="M510,198 L565,196 L616,210 L644,237 L621,258 L596,252 L570,278 L545,263 L529,282 L511,264 L526,239 Z"/>
+                <path class="map-region" data-place="asia" d="M615,212 L691,202 L758,216 L805,243 L773,272 L708,277 L651,266 L610,243 Z"/>
+                <path class="map-region" data-place="africa" d="M127,356 L188,330 L248,322 L307,333 L376,323 L443,343 L507,353 L503,414 L438,421 L376,431 L312,422 L246,432 L185,417 L135,397 Z"/>
+                <path class="map-region" data-place="aegyptus" d="M704,366 L758,362 L782,393 L770,445 L747,497 L716,487 L720,438 L700,410 Z"/>
+                <path class="map-region" data-place="syria" d="M751,263 L798,248 L820,278 L817,315 L795,337 L780,382 L759,391 L748,352 Z"/>
+                <path class="map-region" data-place="mesopotamia" d="M799,248 L872,255 L914,287 L919,326 L891,354 L850,342 L817,314 L820,278 Z"/>
+              </g>
+
+              <g class="city-layer">
+                <g class="svg-city" data-place="rome">
+                  <circle cx="463" cy="243" r="7"/>
+                  <text x="473" y="239">Rōma</text>
+                </g>
+                <g class="svg-city" data-place="carthage">
+                  <circle cx="420" cy="365" r="6"/>
+                  <text x="430" y="361">Carthāgō</text>
+                </g>
+                <g class="svg-city" data-place="alexandria">
+                  <circle cx="718" cy="385" r="6"/>
+                  <text x="728" y="381">Alexandria</text>
+                </g>
+                <g class="svg-city" data-place="antioch">
+                  <circle cx="776" cy="294" r="6"/>
+                  <text x="786" y="290">Antiochia</text>
+                </g>
+              </g>
+
+              <g class="map-labels">
+                <text x="178" y="160">HISPANIA</text>
+                <text x="285" y="145">GALLIA</text>
+                <text x="445" y="170">ITALIA</text>
+                <text x="542" y="225">GRAECIA</text>
+                <text x="681" y="239">ASIA</text>
+                <text x="275" y="390">AFRICA</text>
+                <text x="721" y="430">AEGYPTUS</text>
+                <text x="817" y="293">SYRIA</text>
+              </g>
+
+              <g class="map-legend" transform="translate(34 474)">
+                <rect width="265" height="60" rx="12" fill="rgba(255,255,255,0.88)"/>
+                <rect x="16" y="15" width="24" height="17" rx="3" fill="#a52f2d"/>
+                <text x="51" y="29">Roman territory, c. AD 117</text>
+                <line x1="16" y1="43" x2="40" y2="43" stroke="#6da6b4" stroke-width="3"/>
+                <text x="51" y="47">Selected major rivers</text>
+              </g>
+            </svg>
+
+            <div class="map-toolbar" aria-label="Map controls">
+              <button type="button" id="resetMap">Reset selection</button>
+              <button type="button" id="toggleLabels" aria-pressed="true">Hide labels</button>
+              <span>Simplified educational reconstruction</span>
             </div>
-            <p class="map-caption">The Roman Empire near its greatest extent, c. AD 117</p>
           </div>
 
           <aside class="map-information" aria-live="polite">
-            <span class="card-label">SELECT A LOCATION</span>
+            <span class="card-label">SELECT A REGION OR CITY</span>
             <h3 id="placeTitle">Roman Empire</h3>
             <p id="placeLatin">Imperium Rōmānum</p>
             <p id="placeDescription">
-              Choose one of the numbered markers to begin exploring.
+              Select a shaded province or named city to explore the Roman world
+              at the death of Trajan in AD 117.
             </p>
+            <dl class="map-facts">
+              <div><dt>Period</dt><dd id="placePeriod">AD 117</dd></div>
+              <div><dt>Category</dt><dd id="placeCategory">Empire</dd></div>
+            </dl>
           </aside>
         </div>
 
