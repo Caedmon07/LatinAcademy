@@ -1,4 +1,4 @@
-# Latin Academy v0.6.1
+# Latin Academy v0.7
 
 This version contains:
 
@@ -114,3 +114,20 @@ not a survey-grade province-boundary dataset.
 - Restored dynamically generated vowel and diphthong content
 - Added safer optional-element handling and loading fallbacks
 - Verified that all referenced MP3 files are present
+
+
+## v0.7 learner profiles
+
+- Added multiple learner profiles stored locally in the browser
+- Added a profile selection and management page
+- Added separate XP, streaks, lesson progress, quiz scores, collectibles and achievements
+- Added profile-aware homepage statistics
+- Added profile-aware Introduction and Pronunciation lesson state
+- Added legacy-state migration into the first profile
+- Added achievement rules for lesson completion, quiz performance and collectibles
+
+### Data storage
+
+Profiles currently use browser `localStorage`. They are separate on the same
+browser and device, but they are not yet synchronised between devices or backed
+up to a server. Clearing browser site data will remove them.

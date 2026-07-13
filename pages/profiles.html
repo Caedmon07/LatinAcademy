@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learner Profiles | Latin Academy</title>
+  <link rel="stylesheet" href="../static/styles.css">
+  <link rel="stylesheet" href="../static/profiles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">LA</span>
+      <span>
+        <strong>Latin Academy</strong>
+        <small>Family learning profiles</small>
+      </span>
+    </a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="introduction.html">Introduction</a>
+      <a href="foundations.html">Pronunciation</a>
+    </nav>
+  </header>
+
+  <main class="profiles-shell">
+    <section class="profiles-heading">
+      <div>
+        <p class="eyebrow">FAMILY LEARNING</p>
+        <h1>Who is learning?</h1>
+        <p>
+          Each learner keeps separate lesson progress, quiz scores,
+          collectibles, XP and achievements on this browser.
+        </p>
+      </div>
+      <button class="button primary" id="openCreateProfile" type="button">Add learner</button>
+    </section>
+
+    <section class="profile-grid" id="profileGrid" aria-live="polite"></section>
+
+    <section class="active-dashboard" id="activeDashboard">
+      <div class="dashboard-heading">
+        <div>
+          <p class="eyebrow">ACTIVE LEARNER</p>
+          <h2 id="dashboardName">Learner</h2>
+        </div>
+        <button class="button secondary" id="continueLearning" type="button">Continue learning</button>
+      </div>
+
+      <div class="dashboard-stats">
+        <article><strong id="dashboardXp">0</strong><span>XP</span></article>
+        <article><strong id="dashboardStreak">0</strong><span>Day streak</span></article>
+        <article><strong id="dashboardProgress">0%</strong><span>Overall progress</span></article>
+        <article><strong id="dashboardAchievements">0</strong><span>Achievements</span></article>
+      </div>
+
+      <div class="dashboard-columns">
+        <section>
+          <h3>Course progress</h3>
+          <div id="lessonProgress"></div>
+        </section>
+        <section>
+          <h3>Achievements</h3>
+          <div id="achievementList" class="achievement-list"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="profileDialog">
+    <form method="dialog" id="profileForm">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">NEW LEARNER</p>
+          <h2>Create profile</h2>
+        </div>
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+      </div>
+
+      <label>
+        Learner name
+        <input id="profileName" maxlength="30" autocomplete="off" required>
+      </label>
+
+      <fieldset>
+        <legend>Choose an avatar</legend>
+        <div id="avatarChoices" class="choice-grid avatar-choices"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Choose a profile colour</legend>
+        <div id="colourChoices" class="choice-grid colour-choices"></div>
+      </fieldset>
+
+      <p class="form-error" id="profileError" hidden></p>
+
+      <div class="dialog-actions">
+        <button class="button secondary" value="cancel" type="button" id="cancelProfile">Cancel</button>
+        <button class="button primary" type="submit">Create learner</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="../static/profiles.js"></script>
+  <script src="../static/profiles-page.js"></script>
+</body>
+</html>

@@ -162,16 +162,20 @@ document.querySelector(".word-button")?.addEventListener("click", () => {
 });
 
 const collectibleButton = document.querySelector(".collect-button");
-const collectionKey = "latinAcademy.collectible.sineQuaNon";
+
+function refreshCollectible() {
+  const profile = LatinProfiles.getActiveProfile();
+  const collected = profile.progress.collectibles.includes("sine-qua-non");
+  if (!collectibleButton) return;
+
+  collectibleButton.textContent = collected ? "✓ Collected" : "Collect expression";
+  collectibleButton.classList.toggle("collected", collected);
+}
+
 if (collectibleButton) {
-  if (localStorage.getItem(collectionKey) === "collected") {
-    collectibleButton.textContent = "✓ Collected";
-    collectibleButton.classList.add("collected");
-  }
   collectibleButton.addEventListener("click", () => {
-    localStorage.setItem(collectionKey, "collected");
-    collectibleButton.textContent = "✓ Collected";
-    collectibleButton.classList.add("collected");
+    LatinProfiles.addCollectible("sine-qua-non");
+    refreshCollectible();
     updateProgress();
   });
 }
@@ -179,51 +183,112 @@ if (collectibleButton) {
 document.getElementById("foundationsQuiz")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(event.currentTarget);
-  const answers = { q1: "length", q2: "ae", q3: "rome", q4: "italian", q5: "first", q6: "hard", q7: "w", q8: "lengthen", q9: "tap" };
+  const answers = {
+    q1: "length", q2: "ae", q3: "rome", q4: "italian", q5: "first",
+    q6: "hard", q7: "w", q8: "lengthen", q9: "tap"
+  };
   let score = 0;
 
   Object.entries(answers).forEach(([question, answer]) => {
     if (formData.get(question) === answer) score += 1;
   });
 
+  const profile = LatinProfiles.getActiveProfile();
+  const previousScore = profile.progress.lessons.pronunciation?.quizScore;
+  const passedPreviously = Number(previousScore || 0) >= 7;
+  const passedNow = score >= 7;
+  const bestScore = Math.max(Number(previousScore || 0), score);
+
+  LatinProfiles.setLessonProgress("pronunciation", {
+    quizScore: bestScore,
+    quizTotal: 9,
+    completed: passedNow || passedPreviously,
+    progress: passedNow || passedPreviously ? 100 :
+      Math.max(profile.progress.lessons.pronunciation?.progress || 0, 80),
+    completedAt: passedNow
+      ? (profile.progress.lessons.pronunciation?.completedAt || new Date().toISOString())
+      : profile.progress.lessons.pronunciation?.completedAt
+  });
+
+  if (passedNow && !passedPreviously) {
+    LatinProfiles.addXp(60);
+  } else if (score > Number(previousScore || 0)) {
+    LatinProfiles.addXp(10);
+  }
+
+  LatinProfiles.updateActiveProgress((progress) => {
+    LatinProfiles.awardAchievements(progress);
+  });
+
   const result = document.getElementById("quizResult");
   result.hidden = false;
-  result.className = `quiz-result ${score >= 7 ? "success" : "try-again"}`;
-  result.textContent = score >= 7
-    ? `Excellent — ${score}/9. You have completed the first Foundations lesson.`
-    : `You scored ${score}/9. Review the highlighted lesson sections and try again.`;
+  result.className = `quiz-result ${passedNow ? "success" : "try-again"}`;
+  result.textContent = passedNow
+    ? `Excellent — ${score}/9. ${LatinProfiles.getActiveProfile().name} has completed Pronunciation Foundations.`
+    : `You scored ${score}/9. Review the consonant, vowel and stress sections, then try again.`;
 
-  localStorage.setItem("latinAcademy.foundations.quizScore", String(score));
   updateProgress();
 });
 
 function updateProgress() {
-  const sections = document.querySelectorAll("[data-section]");
-  let visited = Number(localStorage.getItem("latinAcademy.foundations.visited") || 0);
-  const quizScore = Number(localStorage.getItem("latinAcademy.foundations.quizScore") || 0);
-  const collected = localStorage.getItem(collectionKey) === "collected";
+  const profile = LatinProfiles.getActiveProfile();
+  const lesson = profile.progress.lessons.pronunciation || {};
+  const collected = profile.progress.collectibles.includes("sine-qua-non");
+  const visited = Array.isArray(lesson.sectionsVisited) ? lesson.sectionsVisited.length : 0;
 
-  let percentage = Math.min(70, visited * 12);
-  if (collected) percentage += 10;
-  if (quizScore >= 4) percentage = 100;
+  let percentage = Number(lesson.progress || 0);
+  if (!lesson.completed) {
+    percentage = Math.max(percentage, Math.min(75, visited * 9));
+    if (collected) percentage = Math.max(percentage, 10);
+  } else {
+    percentage = 100;
+  }
 
   document.getElementById("progressPercent").textContent = `${percentage}%`;
   document.getElementById("progressBar").style.width = `${percentage}%`;
+
+  const quizScore = lesson.quizScore;
+  const result = document.getElementById("quizResult");
+  if (result && quizScore !== null && quizScore !== undefined) {
+    result.hidden = false;
+    result.className = `quiz-result ${quizScore >= 7 ? "success" : "try-again"}`;
+    result.textContent = quizScore >= 7
+      ? `Best score: ${quizScore}/9. Pronunciation Foundations completed.`
+      : `Best score: ${quizScore}/9. A score of 7 or more completes the lesson.`;
+  }
+
+  refreshCollectible();
 }
 
-const observed = new Set();
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      observed.add(entry.target.id);
-      localStorage.setItem("latinAcademy.foundations.visited", String(observed.size));
-      updateProgress();
-    }
+    if (!entry.isIntersecting || !entry.target.id) return;
+
+    LatinProfiles.updateActiveProgress((progress) => {
+      const lesson = progress.lessons.pronunciation;
+      lesson.sectionsVisited = Array.isArray(lesson.sectionsVisited)
+        ? lesson.sectionsVisited
+        : [];
+
+      if (!lesson.sectionsVisited.includes(entry.target.id)) {
+        lesson.sectionsVisited.push(entry.target.id);
+        if (!lesson.completed) {
+          lesson.progress = Math.max(
+            lesson.progress || 0,
+            Math.min(75, lesson.sectionsVisited.length * 9)
+          );
+        }
+      }
+    });
+
+    updateProgress();
   });
 }, { threshold: 0.35 });
 
 document.querySelectorAll("[data-section]").forEach((section) => observer.observe(section));
-updateProgress();
+
+document.addEventListener("DOMContentLoaded", updateProgress);
+window.addEventListener("latinprofilechanged", updateProgress);
 
 document.querySelectorAll(".audio-example").forEach((button) => {
   button.addEventListener("click", () => {

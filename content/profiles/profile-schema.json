@@ -1,0 +1,30 @@
+{
+  "storage": "browser localStorage",
+  "storage_key": "latinAcademy.profiles",
+  "active_profile_key": "latinAcademy.activeProfileId",
+  "profile": {
+    "id": "learner-unique-id",
+    "name": "Learner name",
+    "avatar": "emoji",
+    "colour": "#hex",
+    "progress": {
+      "xp": 0,
+      "streak": 0,
+      "lessons": {
+        "introduction": {
+          "completed": false,
+          "progress": 0
+        },
+        "pronunciation": {
+          "completed": false,
+          "progress": 0,
+          "quizScore": null,
+          "quizTotal": 9,
+          "sectionsVisited": []
+        }
+      },
+      "collectibles": [],
+      "achievements": []
+    }
+  }
+}

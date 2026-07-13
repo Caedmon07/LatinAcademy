@@ -20,9 +20,9 @@
       <a href="#courses">Lessons</a>
       <a href="#activities">Activities</a>
       <a href="#progress">Progress</a>
-      <button class="profile-button" type="button" aria-label="Open learner profile">
-        DS
-      </button>
+      <button class="profile-button" type="button" aria-label="Open learner profiles"
+              data-profile-menu-button data-profile-href="pages/profiles.html"
+              data-active-profile-avatar>🦁</button>
     </nav>
   </header>
 
@@ -43,15 +43,15 @@
 
         <div class="quick-stats" aria-label="Learner statistics">
           <div>
-            <strong>0</strong>
+            <strong id="homeXp">0</strong>
             <span>XP earned</span>
           </div>
           <div>
-            <strong>0</strong>
+            <strong id="homeStreak">0</strong>
             <span>Day streak</span>
           </div>
           <div>
-            <strong>0%</strong>
+            <strong id="homeProgress">0%</strong>
             <span>Foundations complete</span>
           </div>
         </div>
@@ -198,6 +198,7 @@
     <span>Built for family learning</span>
   </footer>
 
+  <script src="static/profiles.js"></script>
   <script src="static/app.js"></script>
 </body>
 </html>
