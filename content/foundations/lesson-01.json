@@ -9,7 +9,10 @@
     "roman-empire",
     "vowel-quantity",
     "diphthongs",
+    "consonants",
+    "double-consonants",
     "stress",
+    "reading-practice",
     "knowledge-check"
   ],
   "source_pages": [
@@ -23,7 +26,8 @@
     "engine": "eSpeak Latin voice",
     "format": "MP3",
     "status": "synthetic prototype",
-    "clip_count": 21,
+    "clip_count": 37,
     "review_required": true
-  }
+  },
+  "pronunciation_model": "Restored Classical Latin (introductory approximation)"
 }
