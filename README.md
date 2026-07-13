@@ -1,4 +1,4 @@
-# Latin Academy v0.4
+# Latin Academy v0.5
 
 This version contains:
 
@@ -82,3 +82,15 @@ cloud service.
 - Four listen-and-repeat reading sentences
 - Nine-question pronunciation quiz
 - Sixteen additional local MP3 clips
+
+
+## v0.5 map refinement
+
+- Replaced the stylised placeholder with an inline interactive SVG
+- Added more recognisable Mediterranean, European, North African and Near Eastern geography
+- Added ten selectable regions and four selectable cities
+- Added keyboard access, reset and label controls
+- Retained the photographed source map for private reference
+
+The SVG is an original simplified educational reconstruction for c. AD 117,
+not a survey-grade province-boundary dataset.
