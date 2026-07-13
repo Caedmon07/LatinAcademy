@@ -1,4 +1,4 @@
-# Latin Academy v0.5
+# Latin Academy v0.6
 
 This version contains:
 
@@ -94,3 +94,13 @@ cloud service.
 
 The SVG is an original simplified educational reconstruction for c. AD 117,
 not a survey-grade province-boundary dataset.
+
+
+## v0.6 introduction lesson
+
+- Added a complete standalone Introduction lesson in HTML
+- Added a structured Markdown source file
+- Covered what Latin is, why it matters, Latin's influence on English and the Romance languages
+- Added a timeline, root-word examples, language-family comparison, specialist vocabulary and collectible expression
+- Linked the homepage to the Introduction lesson
+- Linked the Introduction lesson to Pronunciation Foundations
