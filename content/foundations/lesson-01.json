@@ -36,5 +36,7 @@
     "scope": "simplified educational reconstruction",
     "interactive_regions": 10,
     "interactive_cities": 4
-  }
+  },
+  "introduction_page": "pages/introduction.html",
+  "introduction_markdown": "content/foundations/introduction.md"
 }
