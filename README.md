@@ -1,4 +1,4 @@
-# Latin Academy v0.3
+# Latin Academy v0.4
 
 This version contains:
 
@@ -71,3 +71,14 @@ technical prototype. Before treating them as authoritative teaching material,
 they should be reviewed against the Classical Latin pronunciation model chosen
 for the course. The website uses ordinary HTML audio playback and requires no
 cloud service.
+
+## v0.4 additions
+
+- Hard `c` and `g`
+- Consonantal `v` as English `w`
+- Tapped or trilled `r`
+- Notes on `s`, `gn`, and word-final `m`
+- Double-consonant practice
+- Four listen-and-repeat reading sentences
+- Nine-question pronunciation quiz
+- Sixteen additional local MP3 clips
