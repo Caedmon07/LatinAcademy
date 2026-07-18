@@ -1,4 +1,4 @@
-# Latin Academy v1.0.3
+# Latin Academy v1.0.4
 
 Latin Academy is a static family-learning website for introductory Latin.
 Version 1.0 adds the first Book I chapter experience and the first reusable,
@@ -176,3 +176,33 @@ http://localhost:8000
 ```
 
 A warning is now displayed whenever the site is opened using `file://`.
+
+
+## v1.0.4 Windows launcher fix
+
+The previous Windows launcher depended on the Python launcher (`py.exe`). On
+some systems, `py.exe` can remain installed while pointing to a Python version
+that has been removed. This produces an error such as:
+
+```text
+Unable to create process using ... Python311\python.exe
+```
+
+The default Windows launcher now uses a built-in PowerShell HTTP server and
+does not require Python, Node.js or any additional installation.
+
+### Start on Windows
+
+Double-click:
+
+```text
+Start Latin Academy.bat
+```
+
+Keep the command window open while using the site. The browser opens at:
+
+```text
+http://localhost:8000
+```
+
+The Python `serve.py` script remains available as an optional alternative.

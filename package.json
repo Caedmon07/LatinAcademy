@@ -1,6 +1,6 @@
 {
   "name": "latin-academy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "description": "Static family learning website for Latin.",
   "scripts": {
