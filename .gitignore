@@ -1,0 +1,21 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Python local server/cache
+__pycache__/
+*.py[cod]
+
+# Temporary archives and local output
+*.zip
+dist/
+tmp/

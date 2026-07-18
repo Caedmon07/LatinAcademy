@@ -1,41 +1,68 @@
-# Latin Academy v0.8
+# Latin Academy v0.9
 
-This version contains:
+Latin Academy is a static family-learning website for introductory Latin. It
+currently provides a complete Foundations course with separate learner
+profiles, progress tracking, interactive pronunciation practice and an
+educational Roman Empire map.
 
-- Responsive homepage
-- Foundations lesson page
-- Original introduction to Latin
-- Stylised Roman Empire map activity
-- Interactive vowel and diphthong cards
-- Embedded synthetic Latin pronunciation clips
-- Stress guidance
-- Five-question quiz
-- Browser-based progress and collectible storage
-- Private source-page image archive
-- Initial structured lesson metadata
+## Current features
+
+- Responsive homepage and ordered lesson journey
+- Separate browser-based learner profiles
+- Individual XP, streaks, lesson progress, scores and achievements
+- Introduction lesson covering why Latin matters
+- Pronunciation lesson covering vowels, diphthongs, consonants and stress
+- Thirty-seven local synthetic pronunciation clips
+- Interactive SVG map of the Roman Empire around AD 117
+- Reading practice and a nine-question Foundations quiz
+- Local progress storage using `localStorage`
+- Structured Markdown and JSON lesson content
+- Automated JavaScript and local-asset validation
+
+## Foundations course
+
+The current course contains two core lessons:
+
+1. **Welcome to Latin**
+2. **Pronunciation Foundations**
+
+A pronunciation score of at least 7 out of 9 completes Foundations.
 
 ## Repository structure
 
 ```text
 LatinAcademy/
-├── index.html
+├── .github/workflows/validate.yml
+├── assets/
+│   ├── audio/latin/
+│   └── source-images/
+├── content/
+│   ├── foundations/
+│   └── profiles/
 ├── pages/
-│   └── foundations.html
+│   ├── introduction.html
+│   ├── foundations.html
+│   └── profiles.html
+├── scripts/
+│   └── validate-site.mjs
 ├── static/
 │   ├── app.js
-│   ├── foundations.js
 │   ├── foundations.css
+│   ├── foundations.js
+│   ├── introduction.css
+│   ├── introduction.js
+│   ├── profiles.css
+│   ├── profiles-page.js
+│   ├── profiles.js
 │   └── styles.css
-├── content/
-│   └── foundations/
-│       └── lesson-01.json
-└── assets/
-    └── source-images/
+├── .gitignore
+├── CONTRIBUTING.md
+├── index.html
+├── package.json
+└── README.md
 ```
 
 ## Run locally
-
-From the repository root:
 
 ```bash
 python -m http.server 8000
@@ -47,97 +74,48 @@ Open:
 http://localhost:8000
 ```
 
-## GitHub placement
+## Validate the repository
 
-Copy the contents of this folder into the root of the `LatinAcademy` repository.
-Do not place the entire `LatinAcademy-v0.2` wrapper folder inside the repository.
+Node.js 22 or later is recommended.
 
-## Content note
+```bash
+npm test
+```
 
-The photographed textbook pages are retained for private family reference.
-The learner-facing text and interactions are original summaries and adaptations.
+Validation checks:
 
+- JavaScript syntax
+- required site files
+- local HTML links and asset references
+- CSS asset references
+
+The same checks run automatically through GitHub Actions on pushes to `main`
+and on pull requests.
+
+## Learner data
+
+Profiles and progress are stored in browser `localStorage`. They are separate
+for each learner on the same browser and device, but are not currently
+synchronised or backed up. Clearing browser site data removes them.
 
 ## Audio
 
-Audio clips are stored in:
+Audio under `assets/audio/latin/` was generated with a synthetic Latin voice.
+It is suitable as a technical learning prototype, but should be reviewed
+against the Classical Latin pronunciation model selected for the final course.
 
-```text
-assets/audio/latin/
-```
+## Content and copyright
 
-They were generated with the local eSpeak Latin voice and are intended as a
-technical prototype. Before treating them as authoritative teaching material,
-they should be reviewed against the Classical Latin pronunciation model chosen
-for the course. The website uses ordinary HTML audio playback and requires no
-cloud service.
+The photographed textbook pages are retained as private source material.
+Learner-facing explanations and activities should remain original summaries,
+adaptations or properly licensed content.
 
-## v0.4 additions
+## Next milestone
 
-- Hard `c` and `g`
-- Consonantal `v` as English `w`
-- Tapped or trilled `r`
-- Notes on `s`, `gn`, and word-final `m`
-- Double-consonant practice
-- Four listen-and-repeat reading sentences
-- Nine-question pronunciation quiz
-- Sixteen additional local MP3 clips
+The next milestone is the Book I lesson-content architecture:
 
-
-## v0.5 map refinement
-
-- Replaced the stylised placeholder with an inline interactive SVG
-- Added more recognisable Mediterranean, European, North African and Near Eastern geography
-- Added ten selectable regions and four selectable cities
-- Added keyboard access, reset and label controls
-- Retained the photographed source map for private reference
-
-The SVG is an original simplified educational reconstruction for c. AD 117,
-not a survey-grade province-boundary dataset.
-
-
-## v0.6 introduction lesson
-
-- Added a complete standalone Introduction lesson in HTML
-- Added a structured Markdown source file
-- Covered what Latin is, why it matters, Latin's influence on English and the Romance languages
-- Added a timeline, root-word examples, language-family comparison, specialist vocabulary and collectible expression
-- Linked the homepage to the Introduction lesson
-- Linked the Introduction lesson to Pronunciation Foundations
-
-
-## v0.6.1 hotfix
-
-- Corrected a JavaScript syntax error introduced during the SVG map merge
-- Restored all audio controls
-- Restored interactive map selection, reset and label controls
-- Restored dynamically generated vowel and diphthong content
-- Added safer optional-element handling and loading fallbacks
-- Verified that all referenced MP3 files are present
-
-
-## v0.7 learner profiles
-
-- Added multiple learner profiles stored locally in the browser
-- Added a profile selection and management page
-- Added separate XP, streaks, lesson progress, quiz scores, collectibles and achievements
-- Added profile-aware homepage statistics
-- Added profile-aware Introduction and Pronunciation lesson state
-- Added legacy-state migration into the first profile
-- Added achievement rules for lesson completion, quiz performance and collectibles
-
-### Data storage
-
-Profiles currently use browser `localStorage`. They are separate on the same
-browser and device, but they are not yet synchronised between devices or backed
-up to a server. Clearing browser site data will remove them.
-
-
-## v0.8 lesson flow
-
-- State-aware homepage CTA and course journey
-- Ordered Introduction to Pronunciation progression
-- Pronunciation prerequisite gate
-- Breadcrumbs and save-and-return-home controls
-- Course completion card and results route
-- Intelligent Continue Learning behaviour
+- reusable lesson renderer
+- structured lesson schema
+- Book I course manifest
+- vocabulary and exercise data
+- first Book I lesson

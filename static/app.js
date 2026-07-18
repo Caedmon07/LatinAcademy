@@ -1,5 +1,123 @@
-document.querySelectorAll('.activity-grid button').forEach((button)=>button.addEventListener('click',()=>alert('This activity will be connected in a later build.')));
-function lessonState(profile){const i=profile.progress.lessons.introduction||{},p=profile.progress.lessons.pronunciation||{};if(!i.completed)return{href:"pages/introduction.html",cta:"Start Foundations",label:"Start with: Welcome to Latin",completed:0};if(!p.completed)return{href:"pages/foundations.html",cta:p.progress>0?"Continue pronunciation":"Begin pronunciation",label:p.progress>0?"Continue: Pronunciation Foundations":"Next: Pronunciation Foundations",completed:1};return{href:"pages/profiles.html",cta:"Review Foundations",label:"Foundations complete — view progress",completed:2}}
-function setStep(el,state,text){el.classList.remove("current","complete","locked");el.classList.add(state);el.querySelector(".journey-status").textContent=text}
-function renderHomeProfile(){const profile=LatinProfiles.getActiveProfile(),overall=LatinProfiles.overallProgress(profile),i=profile.progress.lessons.introduction||{},p=profile.progress.lessons.pronunciation||{},s=lessonState(profile);document.getElementById("homeXp").textContent=profile.progress.xp||0;document.getElementById("homeStreak").textContent=profile.progress.streak||0;document.getElementById("homeProgress").textContent=`${overall}%`;document.getElementById("homeLearnerStatus").textContent=p.quizScore==null?"Ready to learn":`Pronunciation quiz: ${p.quizScore}/${p.quizTotal||9}`;const c=document.getElementById("primaryLearningCta");c.href=s.href;c.textContent=s.cta;const l=document.getElementById("currentLessonLink");l.href=s.href;document.getElementById("currentLessonLabel").textContent=s.label;const t=document.querySelector(".hero-card .progress-track span");if(t)t.style.width=`${overall}%`;document.getElementById("homeLessonCount").textContent=`${s.completed} of 2 core lessons`;document.getElementById("homeCoursePercent").textContent=`${overall}%`;const a=document.getElementById("journeyIntroduction"),b=document.getElementById("journeyPronunciation"),d=document.getElementById("journeyComplete");if(!i.completed){setStep(a,"current",i.progress>0?"In progress":"Start here");setStep(b,"locked","Complete lesson 1 first");setStep(d,"locked","Locked")}else if(!p.completed){setStep(a,"complete","Completed");setStep(b,"current",p.progress>0?"In progress":"Ready");setStep(d,"locked","Complete lesson 2 first")}else{setStep(a,"complete","Completed");setStep(b,"complete","Completed");setStep(d,"complete","Course complete")}b.querySelector("a").style.pointerEvents=i.completed?"auto":"none"}
-document.addEventListener("DOMContentLoaded",renderHomeProfile);window.addEventListener("latinprofilechanged",renderHomeProfile);window.addEventListener("latinprofileschanged",renderHomeProfile);
+function lessonState(profile) {
+  const introduction = profile.progress.lessons.introduction || {};
+  const pronunciation = profile.progress.lessons.pronunciation || {};
+
+  if (!introduction.completed) {
+    return {
+      href: "pages/introduction.html",
+      cta: "Start Foundations",
+      label: "Start with: Welcome to Latin",
+      completedLessons: 0
+    };
+  }
+
+  if (!pronunciation.completed) {
+    const inProgress = Number(pronunciation.progress || 0) > 0;
+    return {
+      href: "pages/foundations.html",
+      cta: inProgress ? "Continue pronunciation" : "Begin pronunciation",
+      label: inProgress
+        ? "Continue: Pronunciation Foundations"
+        : "Next: Pronunciation Foundations",
+      completedLessons: 1
+    };
+  }
+
+  return {
+    href: "pages/profiles.html",
+    cta: "Review Foundations",
+    label: "Foundations complete — view progress",
+    completedLessons: 2
+  };
+}
+
+function setJourneyStep(element, state, statusText) {
+  if (!element) return;
+  element.classList.remove("current", "complete", "locked");
+  element.classList.add(state);
+
+  const status = element.querySelector(".journey-status");
+  if (status) status.textContent = statusText;
+}
+
+function renderHomeProfile() {
+  const profile = LatinProfiles.getActiveProfile();
+  const introduction = profile.progress.lessons.introduction || {};
+  const pronunciation = profile.progress.lessons.pronunciation || {};
+  const overall = LatinProfiles.overallProgress(profile);
+  const state = lessonState(profile);
+
+  document.getElementById("homeXp").textContent = profile.progress.xp || 0;
+  document.getElementById("homeStreak").textContent = profile.progress.streak || 0;
+  document.getElementById("homeProgress").textContent = `${overall}%`;
+
+  const learnerStatus = document.getElementById("homeLearnerStatus");
+  if (learnerStatus) {
+    learnerStatus.textContent =
+      pronunciation.quizScore == null
+        ? "Ready to learn"
+        : `Pronunciation quiz: ${pronunciation.quizScore}/${pronunciation.quizTotal || 9}`;
+  }
+
+  const primaryCta = document.getElementById("primaryLearningCta");
+  if (primaryCta) {
+    primaryCta.href = state.href;
+    primaryCta.textContent = state.cta;
+  }
+
+  const currentLessonLink = document.getElementById("currentLessonLink");
+  if (currentLessonLink) currentLessonLink.href = state.href;
+
+  const currentLessonLabel = document.getElementById("currentLessonLabel");
+  if (currentLessonLabel) currentLessonLabel.textContent = state.label;
+
+  const track = document.querySelector(".hero-card .progress-track span");
+  if (track) track.style.width = `${overall}%`;
+
+  const lessonCount = document.getElementById("homeLessonCount");
+  if (lessonCount) {
+    lessonCount.textContent = `${state.completedLessons} of 2 core lessons`;
+  }
+
+  const coursePercent = document.getElementById("homeCoursePercent");
+  if (coursePercent) coursePercent.textContent = `${overall}%`;
+
+  const introductionStep = document.getElementById("journeyIntroduction");
+  const pronunciationStep = document.getElementById("journeyPronunciation");
+  const completeStep = document.getElementById("journeyComplete");
+
+  if (!introduction.completed) {
+    setJourneyStep(
+      introductionStep,
+      "current",
+      introduction.progress > 0 ? "In progress" : "Start here"
+    );
+    setJourneyStep(pronunciationStep, "locked", "Complete lesson 1 first");
+    setJourneyStep(completeStep, "locked", "Locked");
+  } else if (!pronunciation.completed) {
+    setJourneyStep(introductionStep, "complete", "Completed");
+    setJourneyStep(
+      pronunciationStep,
+      "current",
+      pronunciation.progress > 0 ? "In progress" : "Ready"
+    );
+    setJourneyStep(completeStep, "locked", "Complete lesson 2 first");
+  } else {
+    setJourneyStep(introductionStep, "complete", "Completed");
+    setJourneyStep(pronunciationStep, "complete", "Completed");
+    setJourneyStep(completeStep, "complete", "Course complete");
+  }
+
+  const pronunciationLink = pronunciationStep?.querySelector("a");
+  if (pronunciationLink) {
+    pronunciationLink.style.pointerEvents = introduction.completed ? "auto" : "none";
+    pronunciationLink.setAttribute(
+      "aria-disabled",
+      String(!introduction.completed)
+    );
+  }
+}
+
+document.addEventListener("DOMContentLoaded", renderHomeProfile);
+window.addEventListener("latinprofilechanged", renderHomeProfile);
+window.addEventListener("latinprofileschanged", renderHomeProfile);

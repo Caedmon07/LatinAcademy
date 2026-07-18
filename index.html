@@ -95,7 +95,7 @@
           <h3>Foundations</h3>
           <p>Pronunciation, stress, the Roman Empire and an introduction to Latin.</p>
           <div class="course-meta">
-            <span>5 lessons</span>
+            <span>2 core lessons</span>
             <span>Beginner</span>
           </div>
           <a href="pages/introduction.html" class="card-action">Start course <span>→</span></a>
@@ -180,21 +180,21 @@
           <span class="activity-symbol">Ā</span>
           <h3>Pronunciation Lab</h3>
           <p>Listen to vowels, macrons and diphthongs.</p>
-          <button type="button">Open activity</button>
+          <a class="activity-link" href="pages/foundations.html#pronunciation">Open activity</a>
         </article>
 
         <article>
           <span class="activity-symbol">🗺️</span>
           <h3>Explore the Empire</h3>
           <p>Discover Roman provinces on an interactive map.</p>
-          <button type="button">Open activity</button>
+          <a class="activity-link" href="pages/foundations.html#empire">Open activity</a>
         </article>
 
         <article>
           <span class="activity-symbol">🏆</span>
           <h3>Daily Challenge</h3>
           <p>Answer five questions and build your streak.</p>
-          <button type="button">Start challenge</button>
+          <a class="activity-link" href="pages/foundations.html#quiz">Start challenge</a>
         </article>
       </div>
     </section>
@@ -210,12 +210,13 @@
       </div>
 
       <div class="learner-preview">
-        <div class="avatar">DS</div>
+        <div class="avatar" data-active-profile-avatar>🦁</div>
         <div>
-          <strong>Daniel</strong>
-          <span>New learner</span>
+          <strong data-active-profile-name>Learner</strong>
+          <span id="homeLearnerStatus">Ready to learn</span>
         </div>
-        <button type="button">View profile</button>
+        <button type="button" data-profile-menu-button
+                data-profile-href="pages/profiles.html">View profiles</button>
       </div>
     </section>
   </main>
