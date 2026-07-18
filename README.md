@@ -1,4 +1,4 @@
-# Latin Academy v1.4
+# Latin Academy v1.4.1
 
 Latin Academy is a static family-learning website for introductory Latin.
 Version 1.0 adds the first Book I chapter experience and the first reusable,
@@ -329,3 +329,21 @@ perfect stem and endings `-ī, -istī, -it, -imus, -istis, -ērunt`.
 It includes tense comparison, stem derivation, a complete audio paradigm,
 six-form building practice, six translations, negative perfect forms, a
 seven-question quiz, 55 XP and the **Perfect Past** achievement.
+
+
+## v1.4.1 Lesson 5 navigation hotfix
+
+Lesson 5 contains ten screens, indexed from 0 to 9. The shared screen
+controller had incorrectly been configured with the summary screen as the quiz
+screen and the quiz screen as the completion screen. This disabled Continue on
+screen 8/10.
+
+The controller now uses:
+
+```text
+Quiz screen: 8
+Completion screen: 9
+```
+
+Saved progress restoration has also been corrected to permit returning to the
+quiz screen.

@@ -9,6 +9,12 @@ const files = {
 };
 const errors = [];
 
+const lesson5 = fs.readFileSync("static/lesson-5.js", "utf8");
+if (!lesson5.includes("quizScreen:8,completeScreen:9")) {
+  errors.push("Lesson 5 screen-controller indexes are incorrect.");
+}
+
+
 if (!files.lesson2.includes('answer: "he, she or it sails"')) errors.push("Lesson 2 nāvigat answer is missing.");
 if (!files.lesson2.includes("lessonAudio.playSequence(verbs.amo.audio, 120)")) errors.push("Lesson 2 sequential amō audio is missing.");
 for (const id of ["futureBuilderMeaning","imperfectBuilderMeaning"]) {
