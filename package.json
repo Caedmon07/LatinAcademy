@@ -1,10 +1,10 @@
 {
   "name": "latin-academy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Static family learning website for Latin.",
   "scripts": {
-    "check:syntax": "node --check static/app.js && node --check static/profiles.js && node --check static/profiles-page.js && node --check static/introduction.js && node --check static/foundations.js && node --check static/book1-chapter.js && node --check static/lesson-engine.js",
+    "check:syntax": "node --check static/app.js && node --check static/profiles.js && node --check static/profiles-page.js && node --check static/introduction.js && node --check static/foundations.js && node --check static/book1-chapter.js && node --check static/lesson-engine.js && node --check static/runtime.js",
     "check:site": "node scripts/validate-site.mjs",
     "test": "npm run check:syntax && npm run check:site"
   }

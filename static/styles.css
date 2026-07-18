@@ -609,3 +609,66 @@ nav .profile-button {
 .activity-link:focus {
   background: #e2d6c4;
 }
+
+
+.runtime-warning {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(20, 28, 36, .82);
+  backdrop-filter: blur(6px);
+}
+
+.runtime-warning-card {
+  width: min(680px, 100%);
+  padding: clamp(26px, 5vw, 44px);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .32);
+}
+
+.runtime-warning-card h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.runtime-warning-card p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.runtime-warning-card code {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: #eee7dc;
+}
+
+.runtime-warning-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.runtime-warning-actions a,
+.runtime-warning-actions button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.runtime-warning-actions a {
+  background: var(--roman-red);
+  color: #fff;
+}
+
+.runtime-warning-actions button {
+  background: #eee7dc;
+  color: var(--ink);
+}

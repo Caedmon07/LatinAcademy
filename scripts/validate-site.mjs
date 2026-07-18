@@ -90,6 +90,7 @@ const requiredFiles = [
   "static/book1.css",
   "static/book1-chapter.js",
   "static/lesson-engine.js",
+  "static/runtime.js",
   "content/book1/course.json",
   "content/book1/chapter-01.json",
   "content/book1/lesson-01.json"

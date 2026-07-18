@@ -1,4 +1,4 @@
-# Latin Academy v1.0.2
+# Latin Academy v1.0.3
 
 Latin Academy is a static family-learning website for introductory Latin.
 Version 1.0 adds the first Book I chapter experience and the first reusable,
@@ -137,3 +137,42 @@ The hotfix now:
 - Added cache-busting query strings to all local CSS and JavaScript references.
 - Added a direct **Continue to Book I** action on the Foundations completion card.
 - Updated the manual repair action to use the central recovery routine.
+
+
+## v1.0.3 local server fix
+
+Latin Academy must be opened through a local web server rather than directly
+from `file:///.../index.html`.
+
+Browsers do not provide reliable shared `localStorage` between separate local
+HTML files. When opened with `file://`, the homepage, Introduction,
+Pronunciation and Book I can each see different learner data. This caused the
+progress display, prerequisite gates and Book I unlock state to disagree.
+
+### Windows
+
+Double-click:
+
+```text
+Start Latin Academy.bat
+```
+
+The browser will open:
+
+```text
+http://localhost:8000
+```
+
+### PowerShell
+
+```powershell
+.\Start Latin Academy.ps1
+```
+
+### macOS or Linux
+
+```bash
+./start-latin-academy.sh
+```
+
+A warning is now displayed whenever the site is opened using `file://`.
