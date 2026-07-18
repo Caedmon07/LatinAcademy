@@ -84,7 +84,15 @@ const requiredFiles = [
   "static/app.js",
   "static/introduction.js",
   "static/foundations.js",
-  "content/foundations/course-flow.json"
+  "content/foundations/course-flow.json",
+  "pages/book1/chapter1.html",
+  "pages/book1/lesson-1.html",
+  "static/book1.css",
+  "static/book1-chapter.js",
+  "static/lesson-engine.js",
+  "content/book1/course.json",
+  "content/book1/chapter-01.json",
+  "content/book1/lesson-01.json"
 ];
 
 for (const required of requiredFiles) {

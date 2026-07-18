@@ -1,0 +1,25 @@
+{
+  "id": "book1-chapter1",
+  "title": "Verbs: the Engine of a Latin Sentence",
+  "number": 1,
+  "estimatedMinutes": 60,
+  "learningGoals": [
+    "recognise verbs and understand what they do",
+    "identify person and number",
+    "build first-conjugation present-tense forms",
+    "learn future, imperfect and perfect tense patterns",
+    "understand principal parts",
+    "explore the story of Aeneas"
+  ],
+  "lessonPlan": [
+    "What is a Verb?",
+    "The First Conjugation",
+    "Building Present-Tense Verbs",
+    "Future and Imperfect",
+    "Principal Parts",
+    "The Perfect Tense",
+    "Vocabulary Workshop",
+    "Aeneas and the Origins of Rome",
+    "Chapter Review"
+  ]
+}

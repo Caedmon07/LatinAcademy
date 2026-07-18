@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Latin Academy</title>
-  <link rel="stylesheet" href="static/styles.css">
+  <link rel="stylesheet" href="static/styles.css?v=1.0.2">
 </head>
 <body>
   <header class="site-header">
@@ -101,16 +101,17 @@
           <a href="pages/introduction.html" class="card-action">Start course <span>→</span></a>
         </article>
 
-        <article class="course-card">
+        <article class="course-card" id="book1CourseCard">
           <div class="course-icon">📜</div>
-          <span class="status locked">Coming next</span>
+          <span class="status locked" id="book1Status">Complete Foundations first</span>
           <h3>Latin Book I</h3>
-          <p>Core vocabulary, sentence structure and your first translations.</p>
+          <p>Begin Chapter 1 with verbs, person, number and the first conjugation.</p>
           <div class="course-meta">
-            <span>Book course</span>
+            <span>Chapter 1 started</span>
             <span>Beginner</span>
           </div>
-          <button class="card-action disabled" type="button" disabled>Locked</button>
+          <a class="card-action disabled" id="book1CourseAction"
+             href="pages/book1/chapter1.html" aria-disabled="true">Locked</a>
         </article>
 
         <article class="course-card">
@@ -226,7 +227,7 @@
     <span>Built for family learning</span>
   </footer>
 
-  <script src="static/profiles.js"></script>
-  <script src="static/app.js"></script>
+  <script src="static/profiles.js?v=1.0.2"></script>
+  <script src="static/app.js?v=1.0.2"></script>
 </body>
 </html>

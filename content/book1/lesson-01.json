@@ -1,0 +1,117 @@
+{
+  "id": "book1-ch1-lesson1",
+  "title": "What is a Verb?",
+  "chapter": "Book I · Chapter 1",
+  "estimatedMinutes": 12,
+  "rewardXp": 25,
+  "achievement": {
+    "id": "first-steps-latin",
+    "title": "First Steps into Latin",
+    "description": "Completed the first Book I lesson.",
+    "icon": "⭐"
+  },
+  "objectives": [
+    "recognise a verb as a word that expresses an action or state",
+    "understand first, second and third person",
+    "distinguish singular from plural",
+    "recognise a Latin verb stem and personal ending",
+    "build the six present-tense forms of amō"
+  ],
+  "forms": [
+    {
+      "person": "1st",
+      "number": "singular",
+      "latin": "amō",
+      "stem": "am",
+      "ending": "ō",
+      "english": "I love"
+    },
+    {
+      "person": "2nd",
+      "number": "singular",
+      "latin": "amās",
+      "stem": "amā",
+      "ending": "s",
+      "english": "you love"
+    },
+    {
+      "person": "3rd",
+      "number": "singular",
+      "latin": "amat",
+      "stem": "amā",
+      "ending": "t",
+      "english": "he, she or it loves"
+    },
+    {
+      "person": "1st",
+      "number": "plural",
+      "latin": "amāmus",
+      "stem": "amā",
+      "ending": "mus",
+      "english": "we love"
+    },
+    {
+      "person": "2nd",
+      "number": "plural",
+      "latin": "amātis",
+      "stem": "amā",
+      "ending": "tis",
+      "english": "you all love"
+    },
+    {
+      "person": "3rd",
+      "number": "plural",
+      "latin": "amant",
+      "stem": "ama",
+      "ending": "nt",
+      "english": "they love"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which word is the verb in: The soldier fights?",
+      "options": [
+        "the",
+        "soldier",
+        "fights"
+      ],
+      "answer": "fights"
+    },
+    {
+      "question": "Which grammatical person means ‘we’?",
+      "options": [
+        "1st person plural",
+        "2nd person singular",
+        "3rd person plural"
+      ],
+      "answer": "1st person plural"
+    },
+    {
+      "question": "Which form means ‘we love’?",
+      "options": [
+        "amās",
+        "amāmus",
+        "amant"
+      ],
+      "answer": "amāmus"
+    },
+    {
+      "question": "Which ending identifies ‘they’?",
+      "options": [
+        "-s",
+        "-mus",
+        "-nt"
+      ],
+      "answer": "-nt"
+    },
+    {
+      "question": "What does the ending of a Latin verb usually tell us here?",
+      "options": [
+        "who is doing the action",
+        "where the action happens",
+        "the colour of the subject"
+      ],
+      "answer": "who is doing the action"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ const LatinProfiles = (() => {
   const STORAGE_KEY = "latinAcademy.profiles";
   const ACTIVE_KEY = "latinAcademy.activeProfileId";
   const VERSION_KEY = "latinAcademy.profileDataVersion";
-  const VERSION = "1";
+  const VERSION = "4";
 
   const avatarOptions = ["🦁", "🦅", "🐺", "🐬", "🦉", "🐴", "🏛️", "⚔️"];
   const colourOptions = ["#9e2d2b", "#315d43", "#3c5f8a", "#83558f", "#a7672d", "#2d7072"];
@@ -29,6 +29,25 @@ const LatinProfiles = (() => {
           quizTotal: 9,
           completedAt: null,
           sectionsVisited: []
+        }
+      },
+      book1: {
+        unlocked: false,
+        chapter1: {
+          started: false,
+          completed: false,
+          progress: 0,
+          lessons: {
+            lesson1: {
+              started: false,
+              completed: false,
+              progress: 0,
+              screen: 0,
+              quizScore: null,
+              quizTotal: 5,
+              completedAt: null
+            }
+          }
         }
       },
       collectibles: [],
@@ -91,12 +110,257 @@ const LatinProfiles = (() => {
     return profile;
   }
 
+
+  function normaliseProfile(profile) {
+    profile.progress = profile.progress || createDefaultProgress();
+    profile.progress.lessons = profile.progress.lessons || {};
+    profile.progress.lessons.introduction = {
+      completed: false,
+      progress: 0,
+      completedAt: null,
+      ...(profile.progress.lessons.introduction || {})
+    };
+    profile.progress.lessons.pronunciation = {
+      completed: false,
+      progress: 0,
+      quizScore: null,
+      quizTotal: 9,
+      completedAt: null,
+      sectionsVisited: [],
+      ...(profile.progress.lessons.pronunciation || {})
+    };
+
+    const pronunciationPassed =
+      Boolean(profile.progress.lessons.pronunciation.completed) ||
+      Number(profile.progress.lessons.pronunciation.quizScore || 0) >= 7 ||
+      Number(profile.progress.lessons.pronunciation.progress || 0) >= 100;
+
+    if (pronunciationPassed) {
+      profile.progress.lessons.pronunciation.completed = true;
+      profile.progress.lessons.pronunciation.progress = 100;
+
+      // A learner cannot legitimately have completed pronunciation without
+      // completing the Introduction prerequisite. Older builds could produce
+      // this inconsistent state, so repair it during profile normalisation.
+      profile.progress.lessons.introduction.completed = true;
+      profile.progress.lessons.introduction.progress = 100;
+      profile.progress.lessons.introduction.completedAt =
+        profile.progress.lessons.introduction.completedAt ||
+        profile.progress.lessons.pronunciation.completedAt ||
+        new Date().toISOString();
+    }
+
+    profile.progress.book1 = profile.progress.book1 || {};
+    profile.progress.book1.unlocked =
+      pronunciationPassed ||
+      Boolean(profile.progress.book1.unlocked);
+
+    profile.progress.book1.chapter1 = {
+      started: false,
+      completed: false,
+      progress: 0,
+      lessons: {},
+      ...(profile.progress.book1.chapter1 || {})
+    };
+
+    profile.progress.book1.chapter1.lessons =
+      profile.progress.book1.chapter1.lessons || {};
+
+    profile.progress.book1.chapter1.lessons.lesson1 = {
+      started: false,
+      completed: false,
+      progress: 0,
+      screen: 0,
+      quizScore: null,
+      quizTotal: 5,
+      completedAt: null,
+      ...(profile.progress.book1.chapter1.lessons.lesson1 || {})
+    };
+
+    profile.progress.collectibles = Array.isArray(profile.progress.collectibles)
+      ? profile.progress.collectibles
+      : [];
+    profile.progress.achievements = Array.isArray(profile.progress.achievements)
+      ? profile.progress.achievements
+      : [];
+
+    return profile;
+  }
+
+
+  function achievementId(item) {
+    return typeof item === "string" ? item : item?.id;
+  }
+
+  function mergeLessonProgress(target, source) {
+    if (!source) return target;
+
+    const merged = { ...target };
+    merged.completed = Boolean(target?.completed || source.completed);
+    merged.progress = Math.max(
+      Number(target?.progress || 0),
+      Number(source.progress || 0)
+    );
+
+    if (source.quizScore !== null && source.quizScore !== undefined) {
+      merged.quizScore = Math.max(
+        Number(target?.quizScore || 0),
+        Number(source.quizScore || 0)
+      );
+    }
+
+    merged.quizTotal = Math.max(
+      Number(target?.quizTotal || 0),
+      Number(source.quizTotal || 0)
+    ) || target?.quizTotal || source.quizTotal;
+
+    merged.completedAt =
+      target?.completedAt || source.completedAt || null;
+
+    const visited = new Set([
+      ...(Array.isArray(target?.sectionsVisited) ? target.sectionsVisited : []),
+      ...(Array.isArray(source.sectionsVisited) ? source.sectionsVisited : [])
+    ]);
+    if (visited.size) merged.sectionsVisited = [...visited];
+
+    return merged;
+  }
+
+  function mergeProgress(target, source) {
+    if (!source) return target;
+
+    target.xp = Math.max(Number(target.xp || 0), Number(source.xp || 0));
+    target.streak = Math.max(
+      Number(target.streak || 0),
+      Number(source.streak || 0)
+    );
+    target.lastActiveDate =
+      target.lastActiveDate || source.lastActiveDate || null;
+
+    target.lessons.introduction = mergeLessonProgress(
+      target.lessons.introduction,
+      source.lessons?.introduction
+    );
+    target.lessons.pronunciation = mergeLessonProgress(
+      target.lessons.pronunciation,
+      source.lessons?.pronunciation
+    );
+
+    const targetBookLesson =
+      target.book1.chapter1.lessons.lesson1;
+    const sourceBookLesson =
+      source.book1?.chapter1?.lessons?.lesson1;
+
+    target.book1.chapter1.lessons.lesson1 =
+      mergeLessonProgress(targetBookLesson, sourceBookLesson);
+
+    target.book1.chapter1.lessons.lesson1.started = Boolean(
+      targetBookLesson.started || sourceBookLesson?.started
+    );
+    target.book1.chapter1.lessons.lesson1.screen = Math.max(
+      Number(targetBookLesson.screen || 0),
+      Number(sourceBookLesson?.screen || 0)
+    );
+
+    target.book1.unlocked = Boolean(
+      target.book1.unlocked || source.book1?.unlocked
+    );
+    target.book1.chapter1.started = Boolean(
+      target.book1.chapter1.started || source.book1?.chapter1?.started
+    );
+    target.book1.chapter1.completed = Boolean(
+      target.book1.chapter1.completed || source.book1?.chapter1?.completed
+    );
+    target.book1.chapter1.progress = Math.max(
+      Number(target.book1.chapter1.progress || 0),
+      Number(source.book1?.chapter1?.progress || 0)
+    );
+
+    target.collectibles = [...new Set([
+      ...(target.collectibles || []),
+      ...(source.collectibles || [])
+    ])];
+
+    const achievements = new Map();
+    [...(target.achievements || []), ...(source.achievements || [])]
+      .forEach((item) => {
+        const id = achievementId(item);
+        if (id && !achievements.has(id)) achievements.set(id, item);
+      });
+    target.achievements = [...achievements.values()];
+
+    return target;
+  }
+
+  function applyLegacyProgress(profile) {
+    const legacyQuiz = Number(
+      localStorage.getItem("latinAcademy.foundations.quizScore")
+    );
+    const legacyVisited = Number(
+      localStorage.getItem("latinAcademy.foundations.visited")
+    );
+    const legacyCollected =
+      localStorage.getItem("latinAcademy.collectible.sineQuaNon") ===
+      "collected";
+
+    if (Number.isFinite(legacyQuiz) && legacyQuiz > 0) {
+      profile.progress.lessons.pronunciation.quizScore = Math.max(
+        Number(profile.progress.lessons.pronunciation.quizScore || 0),
+        legacyQuiz
+      );
+    }
+
+    if (Number.isFinite(legacyVisited) && legacyVisited > 0) {
+      profile.progress.lessons.pronunciation.progress = Math.max(
+        Number(profile.progress.lessons.pronunciation.progress || 0),
+        Math.min(90, legacyVisited * 10)
+      );
+    }
+
+    if (
+      legacyCollected &&
+      !profile.progress.collectibles.includes("sine-qua-non")
+    ) {
+      profile.progress.collectibles.push("sine-qua-non");
+    }
+
+    return normaliseProfile(profile);
+  }
+
+  function reconcileActiveProfile(profiles, activeId) {
+    const active = profiles.find((profile) => profile.id === activeId);
+    if (!active) return profiles;
+
+    // Older releases occasionally created a second profile with the same
+    // learner name. Merge only same-name records, preserving separation
+    // between different children.
+    profiles
+      .filter((profile) =>
+        profile.id !== active.id &&
+        String(profile.name).trim().toLowerCase() ===
+          String(active.name).trim().toLowerCase()
+      )
+      .forEach((profile) => mergeProgress(active.progress, profile.progress));
+
+    applyLegacyProgress(active);
+    normaliseProfile(active);
+    return profiles;
+  }
+
+  function repairActiveProfile() {
+    const profiles = initialise();
+    const activeId = getActiveId();
+    reconcileActiveProfile(profiles, activeId);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
+    window.dispatchEvent(new CustomEvent("latinprofileschanged"));
+    return getActiveProfile();
+  }
+
   function initialise() {
-    let profiles = loadProfiles();
+    let profiles = loadProfiles().map(normaliseProfile);
 
     if (profiles.length === 0) {
-      profiles = [migrateLegacyData(defaultProfile())];
-      saveProfiles(profiles);
+      profiles = [normaliseProfile(migrateLegacyData(defaultProfile()))];
     }
 
     let activeId = localStorage.getItem(ACTIVE_KEY);
@@ -104,6 +368,10 @@ const LatinProfiles = (() => {
       activeId = profiles[0].id;
       localStorage.setItem(ACTIVE_KEY, activeId);
     }
+
+    reconcileActiveProfile(profiles, activeId);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
+    localStorage.setItem(VERSION_KEY, VERSION);
 
     return profiles;
   }
@@ -328,6 +596,7 @@ const LatinProfiles = (() => {
     awardAchievements,
     recordActivity,
     overallProgress,
+    repairActiveProfile,
     initials,
     renderActiveProfileButtons,
     attachProfileMenu

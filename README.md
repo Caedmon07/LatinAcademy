@@ -1,32 +1,47 @@
-# Latin Academy v0.9
+# Latin Academy v1.0.2
 
-Latin Academy is a static family-learning website for introductory Latin. It
-currently provides a complete Foundations course with separate learner
-profiles, progress tracking, interactive pronunciation practice and an
-educational Roman Empire map.
+Latin Academy is a static family-learning website for introductory Latin.
+Version 1.0 adds the first Book I chapter experience and the first reusable,
+interactive lesson.
 
-## Current features
+## Current courses
 
-- Responsive homepage and ordered lesson journey
-- Separate browser-based learner profiles
-- Individual XP, streaks, lesson progress, scores and achievements
-- Introduction lesson covering why Latin matters
-- Pronunciation lesson covering vowels, diphthongs, consonants and stress
-- Thirty-seven local synthetic pronunciation clips
-- Interactive SVG map of the Roman Empire around AD 117
-- Reading practice and a nine-question Foundations quiz
-- Local progress storage using `localStorage`
-- Structured Markdown and JSON lesson content
-- Automated JavaScript and local-asset validation
+### Foundations
 
-## Foundations course
+1. Welcome to Latin
+2. Pronunciation Foundations
 
-The current course contains two core lessons:
+### Latin Book I
 
-1. **Welcome to Latin**
-2. **Pronunciation Foundations**
+#### Chapter 1 — Verbs
 
-A pronunciation score of at least 7 out of 9 completes Foundations.
+1. **What is a Verb?** — available now
+2. The First Conjugation — planned
+3. Future and Imperfect — planned
+4. Principal Parts — planned
+5. Perfect Tense — planned
+6. Vocabulary Workshop — planned
+7. Aeneas and the Origins of Rome — planned
+8. Chapter Review — planned
+
+Book I unlocks when the active learner completes Foundations.
+
+## Version 1.0 additions
+
+- Book I, Chapter 1 introduction screen
+- Chapter objectives and lesson path
+- First data-driven interactive lesson
+- Action-word and sentence identification activities
+- Person and number explanations
+- Interactive stem-and-ending verb builder
+- Complete present-tense paradigm of `amō`
+- Six local audio clips for the conjugated forms
+- Five-question completion quiz
+- 25 XP lesson reward
+- **First Steps into Latin** achievement
+- Per-learner Book I progress and score tracking
+- Book I status on the homepage and learner dashboard
+- Structured Book I course, chapter and lesson JSON
 
 ## Repository structure
 
@@ -35,28 +50,31 @@ LatinAcademy/
 ├── .github/workflows/validate.yml
 ├── assets/
 │   ├── audio/latin/
+│   │   └── book1/
 │   └── source-images/
 ├── content/
+│   ├── book1/
+│   │   ├── course.json
+│   │   ├── chapter-01.json
+│   │   └── lesson-01.json
 │   ├── foundations/
 │   └── profiles/
 ├── pages/
-│   ├── introduction.html
+│   ├── book1/
+│   │   ├── chapter1.html
+│   │   └── lesson-1.html
 │   ├── foundations.html
+│   ├── introduction.html
 │   └── profiles.html
 ├── scripts/
 │   └── validate-site.mjs
 ├── static/
 │   ├── app.js
-│   ├── foundations.css
-│   ├── foundations.js
-│   ├── introduction.css
-│   ├── introduction.js
-│   ├── profiles.css
-│   ├── profiles-page.js
+│   ├── book1.css
+│   ├── book1-chapter.js
+│   ├── lesson-engine.js
 │   ├── profiles.js
-│   └── styles.css
-├── .gitignore
-├── CONTRIBUTING.md
+│   └── ...
 ├── index.html
 ├── package.json
 └── README.md
@@ -68,13 +86,9 @@ LatinAcademy/
 python -m http.server 8000
 ```
 
-Open:
+Open `http://localhost:8000`.
 
-```text
-http://localhost:8000
-```
-
-## Validate the repository
+## Validate
 
 Node.js 22 or later is recommended.
 
@@ -82,40 +96,44 @@ Node.js 22 or later is recommended.
 npm test
 ```
 
-Validation checks:
-
-- JavaScript syntax
-- required site files
-- local HTML links and asset references
-- CSS asset references
-
-The same checks run automatically through GitHub Actions on pushes to `main`
-and on pull requests.
+The checks validate JavaScript syntax, required files, local links and local
+asset references. GitHub Actions runs the same checks on pushes and pull
+requests.
 
 ## Learner data
 
-Profiles and progress are stored in browser `localStorage`. They are separate
-for each learner on the same browser and device, but are not currently
-synchronised or backed up. Clearing browser site data removes them.
-
-## Audio
-
-Audio under `assets/audio/latin/` was generated with a synthetic Latin voice.
-It is suitable as a technical learning prototype, but should be reviewed
-against the Classical Latin pronunciation model selected for the final course.
+Profiles and course progress are stored in browser `localStorage`. Book I data
+is added to existing profiles automatically without removing Foundations
+progress.
 
 ## Content and copyright
 
-The photographed textbook pages are retained as private source material.
-Learner-facing explanations and activities should remain original summaries,
-adaptations or properly licensed content.
+The new learner-facing lesson is an original digital treatment of the grammar
+topics in Book I, Chapter 1. Textbook photographs are not included in the
+distributable Book I lesson package.
 
-## Next milestone
 
-The next milestone is the Book I lesson-content architecture:
+## v1.0.1 progress hotfix
 
-- reusable lesson renderer
-- structured lesson schema
-- Book I course manifest
-- vocabulary and exercise data
-- first Book I lesson
+Some profiles created in earlier builds could contain an inconsistent state:
+Pronunciation Foundations was complete, but the Introduction prerequisite was
+still marked incomplete. This caused the pronunciation gate and Book I lock to
+disagree with the visible completion card.
+
+The hotfix now:
+
+- reconciles completion from quiz score, completion flag or 100% progress;
+- automatically marks the Introduction complete when pronunciation is complete;
+- unlocks Book I consistently across the homepage, chapter and lesson pages;
+- forces profile normalisation using data version 3;
+- adds a manual **Repair progress** button to the learner profiles page.
+
+
+## v1.0.2 state synchronisation hotfix
+
+- Added automatic same-learner progress recovery across duplicate legacy records.
+- Re-imports legacy Foundations quiz state into the active profile.
+- Reconciles Introduction, Pronunciation and Book I unlock state centrally.
+- Added cache-busting query strings to all local CSS and JavaScript references.
+- Added a direct **Continue to Book I** action on the Foundations completion card.
+- Updated the manual repair action to use the central recovery routine.

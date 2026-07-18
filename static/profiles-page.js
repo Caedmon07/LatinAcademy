@@ -54,6 +54,12 @@ function renderDashboard() {
 
   const intro = progress.lessons.introduction || {};
   const pronunciation = progress.lessons.pronunciation || {};
+  const book1Lesson1 = progress.book1?.chapter1?.lessons?.lesson1 || {
+    progress: 0,
+    completed: false,
+    quizScore: null,
+    quizTotal: 5
+  };
 
   document.getElementById("lessonProgress").innerHTML = `
     <article class="lesson-progress-card">
@@ -65,6 +71,15 @@ function renderDashboard() {
       <header><strong>Pronunciation Foundations</strong><span>${pronunciation.progress || 0}%</span></header>
       <p>Quiz score: ${pronunciation.quizScore === null || pronunciation.quizScore === undefined ? "Not attempted" : `${pronunciation.quizScore}/${pronunciation.quizTotal || 9}`}</p>
       <div class="profile-progress-track"><span style="width:${pronunciation.progress || 0}%"></span></div>
+    </article>
+    <article class="lesson-progress-card">
+      <header><strong>Book I · Lesson 1</strong><span>${book1Lesson1.progress || 0}%</span></header>
+      <p>${book1Lesson1.completed
+        ? `Completed · Quiz ${book1Lesson1.quizScore}/${book1Lesson1.quizTotal || 5}`
+        : book1Lesson1.started
+          ? "What is a Verb? · In progress"
+          : "What is a Verb? · Not started"}</p>
+      <div class="profile-progress-track"><span style="width:${book1Lesson1.progress || 0}%"></span></div>
     </article>
   `;
 
@@ -175,3 +190,11 @@ document.getElementById("continueLearning").addEventListener("click", () => {
 buildChoices();
 renderProfiles();
 renderDashboard();
+
+
+document.getElementById("repairProgress")?.addEventListener("click", () => {
+  LatinProfiles.repairActiveProfile();
+  renderProfiles();
+  renderDashboard();
+  alert("Progress has been recovered and synchronised for the active learner.");
+});

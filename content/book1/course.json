@@ -1,0 +1,23 @@
+{
+  "id": "book1",
+  "title": "Latin Book I",
+  "status": "in-development",
+  "prerequisite": "foundations",
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "title": "Verbs: the First Conjugation",
+      "intro": "pages/book1/chapter1.html",
+      "lessons": [
+        {
+          "id": "book1-ch1-lesson1",
+          "title": "What is a Verb?",
+          "page": "pages/book1/lesson-1.html",
+          "estimatedMinutes": 12,
+          "xp": 25,
+          "status": "available"
+        }
+      ]
+    }
+  ]
+}

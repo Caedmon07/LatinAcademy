@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learner Profiles | Latin Academy</title>
-  <link rel="stylesheet" href="../static/styles.css">
-  <link rel="stylesheet" href="../static/profiles.css">
+  <link rel="stylesheet" href="../static/styles.css?v=1.0.2">
+  <link rel="stylesheet" href="../static/profiles.css?v=1.0.2">
 </head>
 <body>
   <header class="site-header">
@@ -33,7 +33,10 @@
           collectibles, XP and achievements on this browser.
         </p>
       </div>
-      <button class="button primary" id="openCreateProfile" type="button">Add learner</button>
+      <div class="profile-heading-actions">
+        <button class="button secondary" id="repairProgress" type="button">Repair progress</button>
+        <button class="button primary" id="openCreateProfile" type="button">Add learner</button>
+      </div>
     </section>
 
     <section class="profile-grid" id="profileGrid" aria-live="polite"></section>
@@ -101,7 +104,7 @@
     </form>
   </dialog>
 
-  <script src="../static/profiles.js"></script>
-  <script src="../static/profiles-page.js"></script>
+  <script src="../static/profiles.js?v=1.0.2"></script>
+  <script src="../static/profiles-page.js?v=1.0.2"></script>
 </body>
 </html>

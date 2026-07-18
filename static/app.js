@@ -2,7 +2,18 @@ function lessonState(profile) {
   const introduction = profile.progress.lessons.introduction || {};
   const pronunciation = profile.progress.lessons.pronunciation || {};
 
-  if (!introduction.completed) {
+  const introductionComplete =
+    Boolean(introduction.completed) ||
+    Boolean(pronunciation.completed) ||
+    Number(pronunciation.quizScore || 0) >= 7 ||
+    Number(pronunciation.progress || 0) >= 100;
+
+  const pronunciationComplete =
+    Boolean(pronunciation.completed) ||
+    Number(pronunciation.quizScore || 0) >= 7 ||
+    Number(pronunciation.progress || 0) >= 100;
+
+  if (!introductionComplete) {
     return {
       href: "pages/introduction.html",
       cta: "Start Foundations",
@@ -11,7 +22,7 @@ function lessonState(profile) {
     };
   }
 
-  if (!pronunciation.completed) {
+  if (!pronunciationComplete) {
     const inProgress = Number(pronunciation.progress || 0) > 0;
     return {
       href: "pages/foundations.html",
@@ -38,6 +49,53 @@ function setJourneyStep(element, state, statusText) {
 
   const status = element.querySelector(".journey-status");
   if (status) status.textContent = statusText;
+}
+
+
+function renderBookOneAccess(profile) {
+  const pronunciation = profile.progress.lessons.pronunciation || {};
+  const foundationsComplete =
+    Boolean(pronunciation.completed) ||
+    Number(pronunciation.quizScore || 0) >= 7 ||
+    Number(pronunciation.progress || 0) >= 100;
+  const book1 = profile.progress.book1 || {};
+  const chapter1 = book1.chapter1 || {};
+  const lesson1 = chapter1.lessons?.lesson1 || {};
+
+  const card = document.getElementById("book1CourseCard");
+  const status = document.getElementById("book1Status");
+  const action = document.getElementById("book1CourseAction");
+  if (!card || !status || !action) return;
+
+  action.href = "pages/book1/chapter1.html";
+
+  if (!foundationsComplete) {
+    status.textContent = "Complete Foundations first";
+    status.className = "status locked";
+    action.textContent = "Locked";
+    action.classList.add("disabled");
+    action.setAttribute("aria-disabled", "true");
+    action.style.pointerEvents = "none";
+    return;
+  }
+
+  action.classList.remove("disabled");
+  action.removeAttribute("aria-disabled");
+  action.style.pointerEvents = "auto";
+
+  if (lesson1.completed) {
+    status.textContent = "Lesson 1 complete";
+    status.className = "status available";
+    action.textContent = "Continue Book I →";
+  } else if (lesson1.started) {
+    status.textContent = "In progress";
+    status.className = "status available";
+    action.textContent = "Continue Chapter 1 →";
+  } else {
+    status.textContent = "Available now";
+    status.className = "status available";
+    action.textContent = "Start Book I →";
+  }
 }
 
 function renderHomeProfile() {
@@ -86,7 +144,18 @@ function renderHomeProfile() {
   const pronunciationStep = document.getElementById("journeyPronunciation");
   const completeStep = document.getElementById("journeyComplete");
 
-  if (!introduction.completed) {
+  const introductionComplete =
+    Boolean(introduction.completed) ||
+    Boolean(pronunciation.completed) ||
+    Number(pronunciation.quizScore || 0) >= 7 ||
+    Number(pronunciation.progress || 0) >= 100;
+
+  const pronunciationComplete =
+    Boolean(pronunciation.completed) ||
+    Number(pronunciation.quizScore || 0) >= 7 ||
+    Number(pronunciation.progress || 0) >= 100;
+
+  if (!introductionComplete) {
     setJourneyStep(
       introductionStep,
       "current",
@@ -94,7 +163,7 @@ function renderHomeProfile() {
     );
     setJourneyStep(pronunciationStep, "locked", "Complete lesson 1 first");
     setJourneyStep(completeStep, "locked", "Locked");
-  } else if (!pronunciation.completed) {
+  } else if (!pronunciationComplete) {
     setJourneyStep(introductionStep, "complete", "Completed");
     setJourneyStep(
       pronunciationStep,
@@ -108,12 +177,14 @@ function renderHomeProfile() {
     setJourneyStep(completeStep, "complete", "Course complete");
   }
 
+  renderBookOneAccess(profile);
+
   const pronunciationLink = pronunciationStep?.querySelector("a");
   if (pronunciationLink) {
-    pronunciationLink.style.pointerEvents = introduction.completed ? "auto" : "none";
+    pronunciationLink.style.pointerEvents = introductionComplete ? "auto" : "none";
     pronunciationLink.setAttribute(
       "aria-disabled",
-      String(!introduction.completed)
+      String(!introductionComplete)
     );
   }
 }
