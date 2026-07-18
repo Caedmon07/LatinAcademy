@@ -16,6 +16,14 @@
           "estimatedMinutes": 12,
           "xp": 25,
           "status": "available"
+        },
+        {
+          "id": "book1-ch1-lesson2",
+          "title": "The First Conjugation",
+          "page": "pages/book1/lesson-2.html",
+          "estimatedMinutes": 15,
+          "xp": 35,
+          "status": "available-after-lesson1"
         }
       ]
     }

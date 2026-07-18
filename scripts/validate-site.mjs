@@ -87,13 +87,16 @@ const requiredFiles = [
   "content/foundations/course-flow.json",
   "pages/book1/chapter1.html",
   "pages/book1/lesson-1.html",
+  "pages/book1/lesson-2.html",
   "static/book1.css",
   "static/book1-chapter.js",
   "static/lesson-engine.js",
+  "static/lesson-2.js",
   "static/runtime.js",
   "content/book1/course.json",
   "content/book1/chapter-01.json",
-  "content/book1/lesson-01.json"
+  "content/book1/lesson-01.json",
+  "content/book1/lesson-02.json"
 ];
 
 for (const required of requiredFiles) {

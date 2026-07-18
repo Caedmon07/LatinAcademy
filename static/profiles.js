@@ -2,7 +2,7 @@ const LatinProfiles = (() => {
   const STORAGE_KEY = "latinAcademy.profiles";
   const ACTIVE_KEY = "latinAcademy.activeProfileId";
   const VERSION_KEY = "latinAcademy.profileDataVersion";
-  const VERSION = "4";
+  const VERSION = "5";
 
   const avatarOptions = ["🦁", "🦅", "🐺", "🐬", "🦉", "🐴", "🏛️", "⚔️"];
   const colourOptions = ["#9e2d2b", "#315d43", "#3c5f8a", "#83558f", "#a7672d", "#2d7072"];
@@ -45,6 +45,15 @@ const LatinProfiles = (() => {
               screen: 0,
               quizScore: null,
               quizTotal: 5,
+              completedAt: null
+            },
+            lesson2: {
+              started: false,
+              completed: false,
+              progress: 0,
+              screen: 0,
+              quizScore: null,
+              quizTotal: 6,
               completedAt: null
             }
           }
@@ -177,6 +186,17 @@ const LatinProfiles = (() => {
       ...(profile.progress.book1.chapter1.lessons.lesson1 || {})
     };
 
+    profile.progress.book1.chapter1.lessons.lesson2 = {
+      started: false,
+      completed: false,
+      progress: 0,
+      screen: 0,
+      quizScore: null,
+      quizTotal: 6,
+      completedAt: null,
+      ...(profile.progress.book1.chapter1.lessons.lesson2 || {})
+    };
+
     profile.progress.collectibles = Array.isArray(profile.progress.collectibles)
       ? profile.progress.collectibles
       : [];
@@ -253,6 +273,21 @@ const LatinProfiles = (() => {
 
     target.book1.chapter1.lessons.lesson1 =
       mergeLessonProgress(targetBookLesson, sourceBookLesson);
+
+    const targetBookLesson2 =
+      target.book1.chapter1.lessons.lesson2;
+    const sourceBookLesson2 =
+      source.book1?.chapter1?.lessons?.lesson2;
+
+    target.book1.chapter1.lessons.lesson2 =
+      mergeLessonProgress(targetBookLesson2, sourceBookLesson2);
+    target.book1.chapter1.lessons.lesson2.started = Boolean(
+      targetBookLesson2.started || sourceBookLesson2?.started
+    );
+    target.book1.chapter1.lessons.lesson2.screen = Math.max(
+      Number(targetBookLesson2.screen || 0),
+      Number(sourceBookLesson2?.screen || 0)
+    );
 
     target.book1.chapter1.lessons.lesson1.started = Boolean(
       targetBookLesson.started || sourceBookLesson?.started

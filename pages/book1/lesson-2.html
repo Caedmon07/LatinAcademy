@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: The First Conjugation | Latin Academy</title>
+  <link rel="stylesheet" href="../../static/styles.css?v=1.1.0">
+  <link rel="stylesheet" href="../../static/book1.css?v=1.1.0">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">LA</span>
+      <span><strong>Latin Academy</strong><small>Book I · Chapter 1</small></span>
+    </a>
+    <nav>
+      <a href="chapter1.html">Chapter</a>
+      <a href="../../index.html">Home</a>
+      <button class="profile-button" type="button" data-profile-menu-button
+              data-profile-href="../profiles.html" data-active-profile-avatar>🦁</button>
+    </nav>
+  </header>
+
+  <div class="lesson-coursebar">
+    <a href="chapter1.html">← Chapter 1</a>
+    <div class="lesson-progress-track"><span id="lessonProgressBar"></span></div>
+    <strong id="lessonProgressText">0%</strong>
+    <a href="../../index.html">Save and exit</a>
+  </div>
+
+  <div class="lesson-gate" id="lesson2Gate" hidden>
+    <div>
+      <p class="eyebrow">LESSON LOCKED</p>
+      <h1>Complete Lesson 1 first</h1>
+      <p>The First Conjugation builds directly on stems, endings, person and number.</p>
+      <a class="button primary" href="lesson-1.html">Open Lesson 1</a>
+      <a class="button secondary" href="chapter1.html">Return to chapter</a>
+    </div>
+  </div>
+
+  <main class="interactive-lesson" id="interactiveLesson">
+    <section class="lesson-screen active" data-screen="0">
+      <div class="welcome-screen">
+        <p class="eyebrow">BOOK I · CHAPTER 1 · LESSON 2</p>
+        <h1>The First Conjugation</h1>
+        <p>
+          You already know how <i>amō</i> changes its ending. Now use the same
+          pattern to conjugate several first-conjugation verbs.
+        </p>
+        <div class="lesson-facts">
+          <span>⏱ About 15 minutes</span>
+          <span>⭐ 35 XP</span>
+          <span>🏛 Present tense</span>
+        </div>
+        <button class="button primary next-screen" type="button">Begin lesson</button>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="1">
+      <div class="screen-heading">
+        <p class="eyebrow">1 · ONE RELIABLE PATTERN</p>
+        <h2>Six endings do most of the work</h2>
+        <p>
+          The present-tense ending identifies person and number. Learn the
+          sequence and you can apply it to many verbs.
+        </p>
+      </div>
+
+      <div class="ending-pattern" id="endingPattern"></div>
+
+      <div class="pattern-chant">
+        <p class="card-label">MEMORY CHANT</p>
+        <strong>-ō, -s, -t, -mus, -tis, -nt</strong>
+        <button type="button" id="playAmoPattern">🔊 Hear the pattern with <i>amō</i></button>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="2">
+      <div class="screen-heading">
+        <p class="eyebrow">2 · FIND THE STEM</p>
+        <h2>Remove the final <i>-ō</i></h2>
+        <p>
+          For these regular first-conjugation verbs, the dictionary form ends
+          in <i>-ō</i>. The present stem normally contains a long <i>ā</i>.
+        </p>
+      </div>
+
+      <div class="stem-lab">
+        <article>
+          <span class="stem-source">cantō</span>
+          <span class="stem-arrow">→</span>
+          <span class="stem-result">cantā-</span>
+          <small>sing</small>
+        </article>
+        <article>
+          <span class="stem-source">vocō</span>
+          <span class="stem-arrow">→</span>
+          <span class="stem-result">vocā-</span>
+          <small>call</small>
+        </article>
+        <article>
+          <span class="stem-source">nāvigō</span>
+          <span class="stem-arrow">→</span>
+          <span class="stem-result">nāvigā-</span>
+          <small>sail</small>
+        </article>
+      </div>
+
+      <div class="quick-check">
+        <p>What is the present stem of <strong>labōrō</strong>?</p>
+        <div class="choice-row" data-question="stem">
+          <button type="button" data-answer="labor">labōr-</button>
+          <button type="button" data-answer="labora">labōrā-</button>
+          <button type="button" data-answer="laboro">labōrō-</button>
+        </div>
+        <p class="inline-feedback" id="stemFeedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="3">
+      <div class="screen-heading">
+        <p class="eyebrow">3 · WATCH THE PATTERN</p>
+        <h2>Conjugate <i>cantō</i></h2>
+        <p>The stem remains recognisable while the ending changes.</p>
+      </div>
+
+      <div class="verb-selector">
+        <button type="button" class="active" data-verb="canto">cantō · sing</button>
+        <button type="button" data-verb="aedifico">aedificō · build</button>
+        <button type="button" data-verb="voco">vocō · call</button>
+        <button type="button" data-verb="navigo">nāvigō · sail</button>
+      </div>
+
+      <div class="conjugation-table" id="lesson2Conjugation"></div>
+    </section>
+
+    <section class="lesson-screen" data-screen="4">
+      <div class="screen-heading">
+        <p class="eyebrow">4 · ENDING MATCH</p>
+        <h2>Match meaning to ending</h2>
+        <p id="endingMatchPrompt">Choose the ending meaning “we”.</p>
+      </div>
+
+      <div class="ending-match-game">
+        <div class="ending-bank" id="endingMatchBank"></div>
+        <p class="inline-feedback" id="endingMatchFeedback" aria-live="polite"></p>
+        <div class="builder-score"><span id="endingMatchScore">0</span> / 6 matched</div>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="5">
+      <div class="screen-heading">
+        <p class="eyebrow">5 · CONJUGATION WORKSHOP</p>
+        <h2>Build complete verb forms</h2>
+        <p id="workshopPrompt">Build the requested form.</p>
+      </div>
+
+      <div class="verb-workshop">
+        <div class="workshop-card">
+          <span id="workshopMeaning">we sing</span>
+          <div class="builder-word">
+            <span id="workshopStem">cantā</span><span id="workshopSlot">?</span>
+          </div>
+          <div class="ending-bank" id="workshopBank"></div>
+          <p class="inline-feedback" id="workshopFeedback" aria-live="polite"></p>
+        </div>
+        <div class="builder-score"><span id="workshopScore">0</span> / 8 forms built</div>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="6">
+      <div class="screen-heading">
+        <p class="eyebrow">6 · TRANSLATION PRACTICE</p>
+        <h2>Read the ending first</h2>
+        <p>The ending identifies who acts; the stem identifies the action.</p>
+      </div>
+
+      <div class="translation-game">
+        <article>
+          <strong id="translationLatin">vocātis</strong>
+          <button type="button" id="translationAudio">🔊</button>
+        </article>
+        <div class="choice-row" id="translationChoices"></div>
+        <p class="inline-feedback" id="translationFeedback" aria-live="polite"></p>
+        <div class="builder-score"><span id="translationScore">0</span> / 6 translated</div>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="7">
+      <div class="screen-heading">
+        <p class="eyebrow">7 · PRESENT-TENSE ENGLISH</p>
+        <h2>One Latin form, several natural translations</h2>
+      </div>
+
+      <div class="english-forms">
+        <article>
+          <h3>amō</h3>
+          <p>I love</p>
+          <p>I am loving</p>
+          <p>I do love</p>
+        </article>
+        <article>
+          <h3>cantat</h3>
+          <p>he sings</p>
+          <p>she is singing</p>
+          <p>it does sing</p>
+        </article>
+      </div>
+
+      <div class="tip-box">
+        <strong>Translation principle</strong>
+        <p>
+          Choose the English form that sounds natural in context. Latin does
+          not need separate words equivalent to English <i>am</i> or <i>do</i>
+          in these present-tense translations.
+        </p>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="8">
+      <div class="screen-heading">
+        <p class="eyebrow">8 · LESSON SUMMARY</p>
+        <h2>Your first-conjugation toolkit</h2>
+      </div>
+
+      <div class="summary-points">
+        <p>✓ First-conjugation verbs share the same present-tense endings.</p>
+        <p>✓ The ending sequence is <strong>-ō, -s, -t, -mus, -tis, -nt</strong>.</p>
+        <p>✓ The present stem usually ends in long <strong>ā</strong>.</p>
+        <p>✓ Person and number come from the ending.</p>
+        <p>✓ The same pattern works with <i>cantō</i>, <i>vocō</i>, <i>nāvigō</i>, <i>aedificō</i> and others.</p>
+      </div>
+
+      <div class="vocabulary-strip">
+        <span>amō · love</span>
+        <span>cantō · sing</span>
+        <span>aedificō · build</span>
+        <span>vocō · call</span>
+        <span>nāvigō · sail</span>
+        <span>festīnō · hurry</span>
+        <span>labōrō · work</span>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="9">
+      <div class="screen-heading">
+        <p class="eyebrow">FINAL CHECK</p>
+        <h2>Lesson 2 quiz</h2>
+        <p>Score at least 5 out of 6 to complete the lesson.</p>
+      </div>
+      <form id="lesson2Quiz" class="book-quiz"></form>
+      <div class="quiz-result" id="lesson2QuizResult" hidden></div>
+    </section>
+
+    <section class="lesson-screen" data-screen="10">
+      <div class="completion-celebration">
+        <span class="completion-icon">🏛️</span>
+        <p class="eyebrow">LESSON COMPLETE</p>
+        <h2>First Conjugator</h2>
+        <p id="lesson2CompletionMessage">
+          You can now apply the present-tense pattern to several verbs.
+        </p>
+        <div class="completion-stats">
+          <article><strong>+35</strong><span>XP</span></article>
+          <article><strong id="lesson2FinalScore">0/6</strong><span>Quiz score</span></article>
+          <article><strong>7</strong><span>Verbs introduced</span></article>
+        </div>
+        <div class="completion-actions">
+          <a class="button secondary" href="chapter1.html">Return to Chapter 1</a>
+          <a class="button primary" href="../../index.html">Return to homepage</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lesson-navigation" id="lessonNavigation">
+    <button type="button" id="previousScreen">Back</button>
+    <span id="screenCounter">1 / 11</span>
+    <button type="button" id="nextScreen">Continue</button>
+  </div>
+
+  <script src="../../static/profiles.js?v=1.1.0"></script>
+  <script src="../../static/lesson-2.js?v=1.1.0"></script>
+  <script src="../../static/runtime.js?v=1.1.0"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "id": "book1-ch1-lesson2",
+  "title": "The First Conjugation",
+  "chapter": "Book I · Chapter 1",
+  "estimatedMinutes": 15,
+  "rewardXp": 35,
+  "prerequisite": "book1-ch1-lesson1",
+  "achievement": {
+    "id": "first-conjugator",
+    "title": "First Conjugator",
+    "description": "Conjugated several first-conjugation verbs in the present tense.",
+    "icon": "🏛️"
+  },
+  "objectives": [
+    "recognise the six present-tense personal endings",
+    "find the present stem of a first-conjugation verb",
+    "apply one ending pattern to several verbs",
+    "translate present-tense forms into natural English",
+    "distinguish singular and plural verb forms"
+  ],
+  "endings": [
+    {
+      "person": "1st",
+      "number": "singular",
+      "ending": "ō",
+      "meaning": "I"
+    },
+    {
+      "person": "2nd",
+      "number": "singular",
+      "ending": "s",
+      "meaning": "you"
+    },
+    {
+      "person": "3rd",
+      "number": "singular",
+      "ending": "t",
+      "meaning": "he, she or it"
+    },
+    {
+      "person": "1st",
+      "number": "plural",
+      "ending": "mus",
+      "meaning": "we"
+    },
+    {
+      "person": "2nd",
+      "number": "plural",
+      "ending": "tis",
+      "meaning": "you all"
+    },
+    {
+      "person": "3rd",
+      "number": "plural",
+      "ending": "nt",
+      "meaning": "they"
+    }
+  ],
+  "verbs": [
+    {
+      "principal": "amō",
+      "stem": "amā-",
+      "meaning": "love, like"
+    },
+    {
+      "principal": "cantō",
+      "stem": "cantā-",
+      "meaning": "sing"
+    },
+    {
+      "principal": "aedificō",
+      "stem": "aedificā-",
+      "meaning": "build"
+    },
+    {
+      "principal": "vocō",
+      "stem": "vocā-",
+      "meaning": "call"
+    },
+    {
+      "principal": "nāvigō",
+      "stem": "nāvigā-",
+      "meaning": "sail"
+    },
+    {
+      "principal": "festīnō",
+      "stem": "festīnā-",
+      "meaning": "hurry"
+    },
+    {
+      "principal": "labōrō",
+      "stem": "labōrā-",
+      "meaning": "work"
+    }
+  ]
+}

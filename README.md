@@ -1,4 +1,4 @@
-# Latin Academy v1.0.4
+# Latin Academy v1.1
 
 Latin Academy is a static family-learning website for introductory Latin.
 Version 1.0 adds the first Book I chapter experience and the first reusable,
@@ -206,3 +206,50 @@ http://localhost:8000
 ```
 
 The Python `serve.py` script remains available as an optional alternative.
+
+
+## v1.1 Book I Lesson 2
+
+Lesson 2, **The First Conjugation**, is now available after Lesson 1.
+
+### Learning content
+
+- The six present-tense endings: `-ō, -s, -t, -mus, -tis, -nt`
+- Finding the present stem of regular first-conjugation verbs
+- Applying one conjugation pattern to multiple verbs
+- Recognising person and number from an ending
+- Translating Latin present forms into natural English
+- The alternative English forms “I love”, “I am loving” and “I do love”
+
+### Interactive activities
+
+- Ending-pattern reference and audio sequence
+- Stem identification check
+- Switchable conjugation tables for four verbs
+- Six-item ending-match activity
+- Eight-form conjugation workshop
+- Six-item translation activity
+- Six-question completion quiz
+
+### Vocabulary introduced
+
+- `amō` — love, like
+- `cantō` — sing
+- `aedificō` — build
+- `vocō` — call
+- `nāvigō` — sail
+- `festīnō` — hurry
+- `labōrō` — work
+
+Lesson completion awards 35 XP and the **First Conjugator** achievement.
+
+### New files
+
+```text
+pages/book1/lesson-2.html
+static/lesson-2.js
+content/book1/lesson-02.json
+```
+
+Thirty-six additional local prototype audio clips are stored under
+`assets/audio/latin/book1/`.

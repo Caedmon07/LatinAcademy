@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book I · Chapter 1 | Latin Academy</title>
-  <link rel="stylesheet" href="../../static/styles.css?v=1.0.4">
-  <link rel="stylesheet" href="../../static/book1.css?v=1.0.4">
+  <link rel="stylesheet" href="../../static/styles.css?v=1.1.0">
+  <link rel="stylesheet" href="../../static/book1.css?v=1.1.0">
 </head>
 <body>
   <header class="site-header">
@@ -39,7 +39,7 @@
         </p>
         <div class="chapter-meta">
           <span>⏱ About 60 minutes</span>
-          <span>📚 9 planned lessons</span>
+          <span>📚 2 available · 7 planned</span>
           <span>⭐ Chapter rewards</span>
         </div>
         <div class="chapter-actions">
@@ -71,7 +71,7 @@
     <section class="book-panel">
       <div class="section-heading">
         <div><p class="eyebrow">CHAPTER PATH</p><h2>Lessons</h2></div>
-        <p id="chapterProgressLabel">0 of 1 available lessons completed</p>
+        <p id="chapterProgressLabel">0 of 2 available lessons completed</p>
       </div>
 
       <div class="chapter-path">
@@ -85,10 +85,14 @@
           <a href="lesson-1.html">Open lesson</a>
         </article>
 
-        <article class="chapter-lesson locked">
+        <article class="chapter-lesson locked" id="chapterLesson2">
           <span class="lesson-index">2</span>
-          <div><span class="lesson-status">Coming next</span><h3>The First Conjugation</h3><p>Build the complete present tense of several verbs.</p></div>
-          <button type="button" disabled>Locked</button>
+          <div>
+            <span class="lesson-status">Complete Lesson 1 first</span>
+            <h3>The First Conjugation</h3>
+            <p>Apply the present-tense ending pattern to several regular verbs.</p>
+          </div>
+          <a href="lesson-2.html" aria-disabled="true">Locked</a>
         </article>
 
         <article class="chapter-lesson locked">
@@ -109,8 +113,8 @@
     </aside>
 </main>
 
-  <script src="../../static/profiles.js?v=1.0.4"></script>
-  <script src="../../static/book1-chapter.js?v=1.0.4"></script>
-  <script src="../../static/runtime.js?v=1.0.4"></script>
+  <script src="../../static/profiles.js?v=1.1.0"></script>
+  <script src="../../static/book1-chapter.js?v=1.1.0"></script>
+  <script src="../../static/runtime.js?v=1.1.0"></script>
 </body>
 </html>
