@@ -2,7 +2,7 @@ const LatinProfiles = (() => {
   const STORAGE_KEY = "latinAcademy.profiles";
   const ACTIVE_KEY = "latinAcademy.activeProfileId";
   const VERSION_KEY = "latinAcademy.profileDataVersion";
-  const VERSION = "5";
+  const VERSION = "6";
 
   const avatarOptions = ["🦁", "🦅", "🐺", "🐬", "🦉", "🐴", "🏛️", "⚔️"];
   const colourOptions = ["#9e2d2b", "#315d43", "#3c5f8a", "#83558f", "#a7672d", "#2d7072"];
@@ -54,6 +54,15 @@ const LatinProfiles = (() => {
               screen: 0,
               quizScore: null,
               quizTotal: 6,
+              completedAt: null
+            },
+            lesson3: {
+              started: false,
+              completed: false,
+              progress: 0,
+              screen: 0,
+              quizScore: null,
+              quizTotal: 7,
               completedAt: null
             }
           }
@@ -197,6 +206,17 @@ const LatinProfiles = (() => {
       ...(profile.progress.book1.chapter1.lessons.lesson2 || {})
     };
 
+    profile.progress.book1.chapter1.lessons.lesson3 = {
+      started: false,
+      completed: false,
+      progress: 0,
+      screen: 0,
+      quizScore: null,
+      quizTotal: 7,
+      completedAt: null,
+      ...(profile.progress.book1.chapter1.lessons.lesson3 || {})
+    };
+
     profile.progress.collectibles = Array.isArray(profile.progress.collectibles)
       ? profile.progress.collectibles
       : [];
@@ -287,6 +307,18 @@ const LatinProfiles = (() => {
     target.book1.chapter1.lessons.lesson2.screen = Math.max(
       Number(targetBookLesson2.screen || 0),
       Number(sourceBookLesson2?.screen || 0)
+    );
+
+    const targetBookLesson3 = target.book1.chapter1.lessons.lesson3;
+    const sourceBookLesson3 = source.book1?.chapter1?.lessons?.lesson3;
+    target.book1.chapter1.lessons.lesson3 =
+      mergeLessonProgress(targetBookLesson3, sourceBookLesson3);
+    target.book1.chapter1.lessons.lesson3.started = Boolean(
+      targetBookLesson3.started || sourceBookLesson3?.started
+    );
+    target.book1.chapter1.lessons.lesson3.screen = Math.max(
+      Number(targetBookLesson3.screen || 0),
+      Number(sourceBookLesson3?.screen || 0)
     );
 
     target.book1.chapter1.lessons.lesson1.started = Boolean(

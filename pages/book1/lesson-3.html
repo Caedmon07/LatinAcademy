@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Future and Imperfect | Latin Academy</title>
+  <link rel="stylesheet" href="../../static/styles.css?v=1.2.0">
+  <link rel="stylesheet" href="../../static/book1.css?v=1.2.0">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark">LA</span>
+      <span><strong>Latin Academy</strong><small>Book I · Chapter 1</small></span>
+    </a>
+    <nav>
+      <a href="chapter1.html">Chapter</a>
+      <a href="../../index.html">Home</a>
+      <button class="profile-button" type="button" data-profile-menu-button
+              data-profile-href="../profiles.html" data-active-profile-avatar>🦁</button>
+    </nav>
+  </header>
+
+  <div class="lesson-coursebar">
+    <a href="chapter1.html">← Chapter 1</a>
+    <div class="lesson-progress-track"><span id="lessonProgressBar"></span></div>
+    <strong id="lessonProgressText">0%</strong>
+    <a href="../../index.html">Save and exit</a>
+  </div>
+
+  <div class="lesson-gate" id="lesson3Gate" hidden>
+    <div>
+      <p class="eyebrow">LESSON LOCKED</p>
+      <h1>Complete Lesson 2 first</h1>
+      <p>This lesson assumes that you already recognise the present stem and the six personal endings.</p>
+      <a class="button primary" href="lesson-2.html">Open Lesson 2</a>
+      <a class="button secondary" href="chapter1.html">Return to chapter</a>
+    </div>
+  </div>
+
+  <main class="interactive-lesson" id="interactiveLesson">
+    <section class="lesson-screen active" data-screen="0">
+      <div class="welcome-screen">
+        <p class="eyebrow">BOOK I · CHAPTER 1 · LESSON 3</p>
+        <h1>Future and Imperfect</h1>
+        <p>
+          Latin uses recognisable tense markers to show whether an action
+          <strong>will happen</strong> or <strong>was continuing in the past</strong>.
+        </p>
+        <div class="lesson-facts">
+          <span>⏱ About 18 minutes</span>
+          <span>⭐ 45 XP</span>
+          <span>⏳ Two new tenses</span>
+        </div>
+        <button class="button primary next-screen" type="button">Begin lesson</button>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="1">
+      <div class="screen-heading">
+        <p class="eyebrow">1 · THINK ABOUT TIME</p>
+        <h2>Now, later or continuing in the past?</h2>
+        <p>Compare the time expressed by each English sentence.</p>
+      </div>
+
+      <div class="tense-cards">
+        <article><span>NOW</span><h3>I love</h3><p>Present tense</p></article>
+        <article><span>LATER</span><h3>I will love</h3><p>Future tense</p></article>
+        <article><span>PAST, CONTINUING</span><h3>I was loving</h3><p>Imperfect tense</p></article>
+      </div>
+
+      <div class="quick-check">
+        <p>Which sentence describes a continuing action in the past?</p>
+        <div class="choice-row" data-question="time">
+          <button type="button" data-answer="present">I love</button>
+          <button type="button" data-answer="future">I will love</button>
+          <button type="button" data-answer="imperfect">I was loving</button>
+        </div>
+        <p class="inline-feedback" id="timeFeedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="2">
+      <div class="screen-heading">
+        <p class="eyebrow">2 · THE FUTURE TENSE</p>
+        <h2>Look for <i>-bō, -bis, -bit…</i></h2>
+        <p>The future endings attach to the present stem and tell us who will act.</p>
+      </div>
+
+      <div class="tense-pattern-grid" id="futurePattern"></div>
+
+      <div class="pattern-chant">
+        <p class="card-label">FUTURE CHANT</p>
+        <strong>-bō, -bis, -bit, -bimus, -bitis, -bunt</strong>
+        <button type="button" id="playFuturePattern">🔊 Hear all six forms of <i>amō</i></button>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="3">
+      <div class="screen-heading">
+        <p class="eyebrow">3 · THE IMPERFECT TENSE</p>
+        <h2>Look for <i>-bam, -bās, -bat…</i></h2>
+        <p>The imperfect describes an action that was happening, continued or used to happen.</p>
+      </div>
+
+      <div class="tense-pattern-grid" id="imperfectPattern"></div>
+
+      <div class="pattern-chant">
+        <p class="card-label">IMPERFECT CHANT</p>
+        <strong>-bam, -bās, -bat, -bāmus, -bātis, -bant</strong>
+        <button type="button" id="playImperfectPattern">🔊 Hear all six forms of <i>amō</i></button>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="4">
+      <div class="screen-heading">
+        <p class="eyebrow">4 · COMPARE THE MARKERS</p>
+        <h2>Future or imperfect?</h2>
+        <p>Identify the tense from the marker before translating the person and action.</p>
+      </div>
+
+      <div class="tense-comparison">
+        <article>
+          <span class="tense-label future">FUTURE</span>
+          <strong>amā-bit</strong>
+          <p>he, she or it will love</p>
+        </article>
+        <article>
+          <span class="tense-label imperfect">IMPERFECT</span>
+          <strong>amā-bat</strong>
+          <p>he, she or it was loving / used to love</p>
+        </article>
+      </div>
+
+      <div class="tense-sort-game">
+        <strong id="sortLatin">nāvigābit</strong>
+        <button type="button" id="sortAudio">🔊</button>
+        <p>Which tense is this?</p>
+        <div class="choice-row" id="sortChoices">
+          <button type="button" data-answer="future">Future</button>
+          <button type="button" data-answer="imperfect">Imperfect</button>
+        </div>
+        <p class="inline-feedback" id="sortFeedback" aria-live="polite"></p>
+        <div class="builder-score"><span id="sortScore">0</span> / 8 sorted</div>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="5">
+      <div class="screen-heading">
+        <p class="eyebrow">5 · BUILD THE FUTURE</p>
+        <h2>Add the correct future ending</h2>
+        <p id="futureBuilderPrompt">Build a future form.</p>
+      </div>
+
+      <div class="verb-workshop">
+        <div class="workshop-card">
+          <span id="futureBuilderMeaning">we will sing</span>
+          <div class="builder-word">
+            <span id="futureBuilderStem">cantā</span><span id="futureBuilderSlot">?</span>
+          </div>
+          <div class="ending-bank" id="futureBuilderBank"></div>
+          <p class="inline-feedback" id="futureBuilderFeedback" aria-live="polite"></p>
+        </div>
+        <div class="builder-score"><span id="futureBuilderScore">0</span> / 6 built</div>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="6">
+      <div class="screen-heading">
+        <p class="eyebrow">6 · BUILD THE IMPERFECT</p>
+        <h2>Describe what was happening</h2>
+        <p id="imperfectBuilderPrompt">Build an imperfect form.</p>
+      </div>
+
+      <div class="verb-workshop">
+        <div class="workshop-card">
+          <span id="imperfectBuilderMeaning">they were working</span>
+          <div class="builder-word">
+            <span id="imperfectBuilderStem">labōrā</span><span id="imperfectBuilderSlot">?</span>
+          </div>
+          <div class="ending-bank" id="imperfectBuilderBank"></div>
+          <p class="inline-feedback" id="imperfectBuilderFeedback" aria-live="polite"></p>
+        </div>
+        <div class="builder-score"><span id="imperfectBuilderScore">0</span> / 6 built</div>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="7">
+      <div class="screen-heading">
+        <p class="eyebrow">7 · AND, BUT, NOT</p>
+        <h2>Connect and negate ideas</h2>
+        <p><i>et</i> means “and”, <i>sed</i> means “but”, and <i>nōn</i> comes before the verb.</p>
+      </div>
+
+      <div class="connector-grid">
+        <article><strong>et</strong><span>and</span><p>amat et cantat</p></article>
+        <article><strong>sed</strong><span>but</span><p>pugnat sed labōrat</p></article>
+        <article><strong>nōn</strong><span>not</span><p>nōn amat</p></article>
+      </div>
+
+      <div class="quick-check">
+        <p>Which order correctly means “he will not call”?</p>
+        <div class="choice-row" data-question="negative">
+          <button type="button" data-answer="wrong1">vocābit nōn</button>
+          <button type="button" data-answer="correct">nōn vocābit</button>
+          <button type="button" data-answer="wrong2">nōnque vocābit</button>
+        </div>
+        <p class="inline-feedback" id="negativeFeedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="8">
+      <div class="screen-heading">
+        <p class="eyebrow">8 · TRANSLATION PRACTICE</p>
+        <h2>Read tense, person and stem</h2>
+      </div>
+
+      <div class="translation-game">
+        <article>
+          <strong id="lesson3TranslationLatin">cantābimus</strong>
+          <button type="button" id="lesson3TranslationAudio">🔊</button>
+        </article>
+        <div class="choice-row" id="lesson3TranslationChoices"></div>
+        <p class="inline-feedback" id="lesson3TranslationFeedback" aria-live="polite"></p>
+        <div class="builder-score"><span id="lesson3TranslationScore">0</span> / 8 translated</div>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="9">
+      <div class="screen-heading">
+        <p class="eyebrow">9 · LESSON SUMMARY</p>
+        <h2>Two tense systems</h2>
+      </div>
+
+      <div class="summary-points">
+        <p>✓ Future: <strong>-bō, -bis, -bit, -bimus, -bitis, -bunt</strong>.</p>
+        <p>✓ Imperfect: <strong>-bam, -bās, -bat, -bāmus, -bātis, -bant</strong>.</p>
+        <p>✓ Future means an action will happen.</p>
+        <p>✓ Imperfect means an action was happening or used to happen.</p>
+        <p>✓ <i>nōn</i> is placed before the verb; <i>et</i> joins with “and”; <i>sed</i> contrasts with “but”.</p>
+      </div>
+    </section>
+
+    <section class="lesson-screen" data-screen="10">
+      <div class="screen-heading">
+        <p class="eyebrow">FINAL CHECK</p>
+        <h2>Lesson 3 quiz</h2>
+        <p>Score at least 6 out of 7 to complete the lesson.</p>
+      </div>
+      <form id="lesson3Quiz" class="book-quiz"></form>
+      <div class="quiz-result" id="lesson3QuizResult" hidden></div>
+    </section>
+
+    <section class="lesson-screen" data-screen="11">
+      <div class="completion-celebration">
+        <span class="completion-icon">⏳</span>
+        <p class="eyebrow">LESSON COMPLETE</p>
+        <h2>Latin Time Traveller</h2>
+        <p id="lesson3CompletionMessage">You can distinguish future actions from continuing past actions.</p>
+        <div class="completion-stats">
+          <article><strong>+45</strong><span>XP</span></article>
+          <article><strong id="lesson3FinalScore">0/7</strong><span>Quiz score</span></article>
+          <article><strong>2</strong><span>Tenses learned</span></article>
+        </div>
+        <div class="completion-actions">
+          <a class="button secondary" href="chapter1.html">Return to Chapter 1</a>
+          <a class="button primary" href="../../index.html">Return to homepage</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lesson-navigation" id="lessonNavigation">
+    <button type="button" id="previousScreen">Back</button>
+    <span id="screenCounter">1 / 12</span>
+    <button type="button" id="nextScreen">Continue</button>
+  </div>
+
+  <script src="../../static/profiles.js?v=1.2.0"></script>
+  <script src="../../static/lesson-3.js?v=1.2.0"></script>
+  <script src="../../static/runtime.js?v=1.2.0"></script>
+</body>
+</html>

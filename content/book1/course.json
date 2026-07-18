@@ -24,6 +24,14 @@
           "estimatedMinutes": 15,
           "xp": 35,
           "status": "available-after-lesson1"
+        },
+        {
+          "id": "book1-ch1-lesson3",
+          "title": "Future and Imperfect",
+          "page": "pages/book1/lesson-3.html",
+          "estimatedMinutes": 18,
+          "xp": 45,
+          "status": "available-after-lesson2"
         }
       ]
     }

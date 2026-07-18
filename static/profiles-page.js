@@ -66,6 +66,12 @@ function renderDashboard() {
     quizScore: null,
     quizTotal: 6
   };
+  const book1Lesson3 = progress.book1?.chapter1?.lessons?.lesson3 || {
+    progress: 0,
+    completed: false,
+    quizScore: null,
+    quizTotal: 7
+  };
 
   document.getElementById("lessonProgress").innerHTML = `
     <article class="lesson-progress-card">
@@ -97,6 +103,17 @@ function renderDashboard() {
             ? "The First Conjugation · Ready"
             : "The First Conjugation · Locked"}</p>
       <div class="profile-progress-track"><span style="width:${book1Lesson2.progress || 0}%"></span></div>
+    </article>
+    <article class="lesson-progress-card">
+      <header><strong>Book I · Lesson 3</strong><span>${book1Lesson3.progress || 0}%</span></header>
+      <p>${book1Lesson3.completed
+        ? `Completed · Quiz ${book1Lesson3.quizScore}/${book1Lesson3.quizTotal || 7}`
+        : book1Lesson3.started
+          ? "Future and Imperfect · In progress"
+          : book1Lesson2.completed
+            ? "Future and Imperfect · Ready"
+            : "Future and Imperfect · Locked"}</p>
+      <div class="profile-progress-track"><span style="width:${book1Lesson3.progress || 0}%"></span></div>
     </article>
   `;
 

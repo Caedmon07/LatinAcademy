@@ -1,0 +1,60 @@
+{
+  "id": "book1-ch1-lesson3",
+  "title": "Future and Imperfect",
+  "chapter": "Book I · Chapter 1",
+  "estimatedMinutes": 18,
+  "rewardXp": 45,
+  "prerequisite": "book1-ch1-lesson2",
+  "achievement": {
+    "id": "time-traveller",
+    "title": "Latin Time Traveller",
+    "description": "Distinguished future actions from continuing past actions.",
+    "icon": "⏳"
+  },
+  "objectives": [
+    "recognise first-conjugation future forms",
+    "recognise first-conjugation imperfect forms",
+    "compare future and imperfect tense markers",
+    "translate future and imperfect forms naturally",
+    "use nōn before a verb and connect ideas with et and sed"
+  ],
+  "futureEndings": [
+    "bō",
+    "bis",
+    "bit",
+    "bimus",
+    "bitis",
+    "bunt"
+  ],
+  "imperfectEndings": [
+    "bam",
+    "bās",
+    "bat",
+    "bāmus",
+    "bātis",
+    "bant"
+  ],
+  "examples": {
+    "future": [
+      "amābō",
+      "amābis",
+      "amābit",
+      "amābimus",
+      "amābitis",
+      "amābunt"
+    ],
+    "imperfect": [
+      "amābam",
+      "amābās",
+      "amābat",
+      "amābāmus",
+      "amābātis",
+      "amābant"
+    ]
+  },
+  "languageNotes": {
+    "non": "nōn is placed before the verb",
+    "et": "and",
+    "sed": "but"
+  }
+}

@@ -74,12 +74,12 @@ const workshopTasks = [
 ];
 
 const translations = [
-  { verb: "voco", form: 4, options: ["you all call", "we call", "they call"] },
-  { verb: "navigo", form: 2, options: ["I sail", "he, she or it sails", "you sail"] },
-  { verb: "festino", form: 5, options: ["they hurry", "we hurry", "you all hurry"] },
-  { verb: "aedifico", form: 0, options: ["I build", "he builds", "they build"] },
-  { verb: "laboro", form: 3, options: ["you work", "we work", "they work"] },
-  { verb: "canto", form: 1, options: ["you sing", "I sing", "you all sing"] }
+  { verb: "voco", form: 4, answer: "you all call", options: ["you all call", "we call", "they call"] },
+  { verb: "navigo", form: 2, answer: "he, she or it sails", options: ["I sail", "he, she or it sails", "you sail"] },
+  { verb: "festino", form: 5, answer: "they hurry", options: ["they hurry", "we hurry", "you all hurry"] },
+  { verb: "aedifico", form: 0, answer: "I build", options: ["I build", "he builds", "they build"] },
+  { verb: "laboro", form: 3, answer: "we work", options: ["you work", "we work", "they work"] },
+  { verb: "canto", form: 1, answer: "you sing", options: ["you sing", "I sing", "you all sing"] }
 ];
 
 const quizItems = [
@@ -315,7 +315,7 @@ function renderWorkshop() {
 function renderTranslation() {
   const task = translations[translationIndex];
   const verb = verbs[task.verb];
-  const correct = `${endings[task.form].meaning} ${verb.meaning}`;
+  const correct = task.answer;
 
   document.getElementById("translationLatin").textContent = verb.forms[task.form];
   document.getElementById("translationFeedback").textContent = "";
@@ -368,11 +368,36 @@ function renderQuiz() {
   `).join("") + '<button class="button primary" type="submit">Mark answers</button>';
 }
 
-document.getElementById("playAmoPattern").addEventListener("click", async () => {
+function playClipAndWait(filename) {
+  return new Promise((resolve) => {
+    audio.pause();
+    audio.currentTime = 0;
+    audio.src = `../../assets/audio/latin/book1/${filename}`;
+
+    const finish = () => {
+      audio.removeEventListener("ended", finish);
+      audio.removeEventListener("error", finish);
+      resolve();
+    };
+
+    audio.addEventListener("ended", finish, { once: true });
+    audio.addEventListener("error", finish, { once: true });
+    audio.play().catch(finish);
+  });
+}
+
+document.getElementById("playAmoPattern").addEventListener("click", async (event) => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  button.textContent = "🔊 Playing amō, amās, amat, amāmus, amātis, amant…";
+
   for (const filename of verbs.amo.audio) {
-    playClip(filename);
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await playClipAndWait(filename);
+    await new Promise((resolve) => setTimeout(resolve, 120));
   }
+
+  button.disabled = false;
+  button.innerHTML = "🔊 Hear the pattern with <i>amō</i>";
 });
 
 document.querySelectorAll(".verb-selector button").forEach((button) => {

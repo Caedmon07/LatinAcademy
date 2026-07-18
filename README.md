@@ -1,4 +1,4 @@
-# Latin Academy v1.1
+# Latin Academy v1.2
 
 Latin Academy is a static family-learning website for introductory Latin.
 Version 1.0 adds the first Book I chapter experience and the first reusable,
@@ -253,3 +253,11 @@ content/book1/lesson-02.json
 
 Thirty-six additional local prototype audio clips are stored under
 `assets/audio/latin/book1/`.
+
+
+## v1.2 Book I Lesson 3 and Lesson 2 fixes
+
+- Fixed the six-form amō audio sequence so each clip finishes before the next begins.
+- Fixed the nāvigat translation answer by using explicit English answers rather than mechanically combining pronouns and dictionary meanings.
+- Added Lesson 3: Future and Imperfect.
+- Added future and imperfect pattern audio, tense sorting, builders, translation practice, nōn/et/sed, a seven-question quiz, 45 XP and the Latin Time Traveller achievement.

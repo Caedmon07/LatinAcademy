@@ -21,6 +21,11 @@ function ensureBookOneProgress(profile) {
       started: false, completed: false, progress: 0, screen: 0,
       quizScore: null, quizTotal: 6, completedAt: null
     };
+  profile.progress.book1.chapter1.lessons.lesson3 =
+    profile.progress.book1.chapter1.lessons.lesson3 || {
+      started: false, completed: false, progress: 0, screen: 0,
+      quizScore: null, quizTotal: 7, completedAt: null
+    };
 
   return profile.progress.book1;
 }
@@ -59,6 +64,7 @@ function renderChapter() {
   const book1 = ensureBookOneProgress(profile);
   const lesson1 = book1.chapter1.lessons.lesson1;
   const lesson2 = book1.chapter1.lessons.lesson2;
+  const lesson3 = book1.chapter1.lessons.lesson3;
 
   renderLessonCard(
     document.getElementById("chapterLesson1"),
@@ -77,9 +83,16 @@ function renderChapter() {
     }
   );
 
-  const completed = [lesson1.completed, lesson2.completed].filter(Boolean).length;
+  renderLessonCard(
+    document.getElementById("chapterLesson3"),
+    lesson3,
+    Boolean(lesson2.completed),
+    { available: "Unlocked", locked: "Complete Lesson 2 first" }
+  );
+
+  const completed = [lesson1.completed, lesson2.completed, lesson3.completed].filter(Boolean).length;
   document.getElementById("chapterProgressLabel").textContent =
-    `${completed} of 2 available lessons completed`;
+    `${completed} of 3 available lessons completed`;
 
   const startButton = document.getElementById("chapterStartButton");
   if (!lesson1.completed) {
@@ -92,9 +105,12 @@ function renderChapter() {
     startButton.textContent = lesson2.started
       ? "Continue Lesson 2"
       : "Start Lesson 2";
+  } else if (!lesson3.completed) {
+    startButton.href = "lesson-3.html";
+    startButton.textContent = lesson3.started ? "Continue Lesson 3" : "Start Lesson 3";
   } else {
-    startButton.href = "lesson-2.html";
-    startButton.textContent = "Review Lesson 2";
+    startButton.href = "lesson-3.html";
+    startButton.textContent = "Review Lesson 3";
   }
 }
 
