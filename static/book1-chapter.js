@@ -31,6 +31,11 @@ function ensureBookOneProgress(profile) {
       started: false, completed: false, progress: 0, screen: 0,
       quizScore: null, quizTotal: 7, completedAt: null
     };
+  profile.progress.book1.chapter1.lessons.lesson5 =
+    profile.progress.book1.chapter1.lessons.lesson5 || {
+      started: false, completed: false, progress: 0, screen: 0,
+      quizScore: null, quizTotal: 7, completedAt: null
+    };
 
   return profile.progress.book1;
 }
@@ -71,6 +76,7 @@ function renderChapter() {
   const lesson2 = book1.chapter1.lessons.lesson2;
   const lesson3 = book1.chapter1.lessons.lesson3;
   const lesson4 = book1.chapter1.lessons.lesson4;
+  const lesson5 = book1.chapter1.lessons.lesson5;
 
   renderLessonCard(
     document.getElementById("chapterLesson1"),
@@ -97,9 +103,10 @@ function renderChapter() {
   );
 
   renderLessonCard(document.getElementById("chapterLesson4"),lesson4,Boolean(lesson3.completed),{available:"Unlocked",locked:"Complete Lesson 3 first"});
-  const completed = [lesson1.completed, lesson2.completed, lesson3.completed, lesson4.completed].filter(Boolean).length;
+  renderLessonCard(document.getElementById("chapterLesson5"),lesson5,Boolean(lesson4.completed),{available:"Unlocked",locked:"Complete Lesson 4 first"});
+  const completed = [lesson1.completed, lesson2.completed, lesson3.completed, lesson4.completed, lesson5.completed].filter(Boolean).length;
   document.getElementById("chapterProgressLabel").textContent =
-    `${completed} of 4 available lessons completed`;
+    `${completed} of 5 available lessons completed`;
 
   const startButton = document.getElementById("chapterStartButton");
   if (!lesson1.completed) {
@@ -118,9 +125,12 @@ function renderChapter() {
   } else if (!lesson4.completed) {
     startButton.href = "lesson-4.html";
     startButton.textContent = lesson4.started ? "Continue Lesson 4" : "Start Lesson 4";
+  } else if (!lesson5.completed) {
+    startButton.href = "lesson-5.html";
+    startButton.textContent = lesson5.started ? "Continue Lesson 5" : "Start Lesson 5";
   } else {
-    startButton.href = "lesson-4.html";
-    startButton.textContent = "Review Lesson 4";
+    startButton.href = "lesson-5.html";
+    startButton.textContent = "Review Lesson 5";
   }
 }
 

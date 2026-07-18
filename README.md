@@ -1,4 +1,4 @@
-# Latin Academy v1.3
+# Latin Academy v1.4
 
 Latin Academy is a static family-learning website for introductory Latin.
 Version 1.0 adds the first Book I chapter experience and the first reusable,
@@ -319,3 +319,13 @@ Placeholder pages and chapter-path entries have also been added for:
 
 - Lesson 5 — The Perfect Tense
 - Lesson 6 — Vocabulary and Chapter Review
+
+
+## v1.4 Book I Lesson 5
+
+Lesson 5, **The Perfect Tense**, teaches completed past actions using the
+perfect stem and endings `-ī, -istī, -it, -imus, -istis, -ērunt`.
+
+It includes tense comparison, stem derivation, a complete audio paradigm,
+six-form building practice, six translations, negative perfect forms, a
+seven-question quiz, 55 XP and the **Perfect Past** achievement.

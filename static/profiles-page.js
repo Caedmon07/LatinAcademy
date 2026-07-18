@@ -78,6 +78,12 @@ function renderDashboard() {
     quizScore: null,
     quizTotal: 7
   };
+  const book1Lesson5 = progress.book1?.chapter1?.lessons?.lesson5 || {
+    progress: 0,
+    completed: false,
+    quizScore: null,
+    quizTotal: 7
+  };
 
   document.getElementById("lessonProgress").innerHTML = `
     <article class="lesson-progress-card">
@@ -131,6 +137,11 @@ function renderDashboard() {
             ? "Principal Parts · Ready"
             : "Principal Parts · Locked"}</p>
       <div class="profile-progress-track"><span style="width:${book1Lesson4.progress || 0}%"></span></div>
+    </article>
+    <article class="lesson-progress-card">
+      <header><strong>Book I · Lesson 5</strong><span>${book1Lesson5.progress || 0}%</span></header>
+      <p>${book1Lesson5.completed ? `Completed · Quiz ${book1Lesson5.quizScore}/${book1Lesson5.quizTotal || 7}` : book1Lesson5.started ? "The Perfect Tense · In progress" : book1Lesson4.completed ? "The Perfect Tense · Ready" : "The Perfect Tense · Locked"}</p>
+      <div class="profile-progress-track"><span style="width:${book1Lesson5.progress || 0}%"></span></div>
     </article>
   `;
 

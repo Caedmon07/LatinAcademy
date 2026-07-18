@@ -1,0 +1,37 @@
+{
+  "id": "book1-ch1-lesson5",
+  "title": "The Perfect Tense",
+  "chapter": "Book I · Chapter 1",
+  "estimatedMinutes": 18,
+  "rewardXp": 55,
+  "prerequisite": "book1-ch1-lesson4",
+  "achievement": {
+    "id": "perfect-past",
+    "title": "Perfect Past",
+    "description": "Built and translated regular perfect-tense forms.",
+    "icon": "🏺"
+  },
+  "objectives": [
+    "recognise the perfect tense as completed past action",
+    "derive the perfect stem from the third principal part",
+    "apply the perfect endings",
+    "translate perfect forms naturally",
+    "distinguish perfect from imperfect"
+  ],
+  "endings": [
+    "ī",
+    "istī",
+    "it",
+    "imus",
+    "istis",
+    "ērunt"
+  ],
+  "forms": [
+    "amāvī",
+    "amāvistī",
+    "amāvit",
+    "amāvimus",
+    "amāvistis",
+    "amāvērunt"
+  ]
+}

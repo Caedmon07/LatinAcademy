@@ -99,13 +99,15 @@ const requiredFiles = [
   "static/lesson-2.js",
   "static/lesson-3.js",
   "static/lesson-4.js",
+  "static/lesson-5.js",
   "static/runtime.js",
   "content/book1/course.json",
   "content/book1/chapter-01.json",
   "content/book1/lesson-01.json",
   "content/book1/lesson-02.json",
   "content/book1/lesson-03.json",
-  "content/book1/lesson-04.json"
+  "content/book1/lesson-04.json",
+  "content/book1/lesson-05.json"
 ];
 
 for (const required of requiredFiles) {

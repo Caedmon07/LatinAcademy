@@ -2,7 +2,7 @@ const LatinProfiles = (() => {
   const STORAGE_KEY = "latinAcademy.profiles";
   const ACTIVE_KEY = "latinAcademy.activeProfileId";
   const VERSION_KEY = "latinAcademy.profileDataVersion";
-  const VERSION = "7";
+  const VERSION = "8";
 
   const avatarOptions = ["🦁", "🦅", "🐺", "🐬", "🦉", "🐴", "🏛️", "⚔️"];
   const colourOptions = ["#9e2d2b", "#315d43", "#3c5f8a", "#83558f", "#a7672d", "#2d7072"];
@@ -66,6 +66,15 @@ const LatinProfiles = (() => {
               completedAt: null
             },
             lesson4: {
+              started: false,
+              completed: false,
+              progress: 0,
+              screen: 0,
+              quizScore: null,
+              quizTotal: 7,
+              completedAt: null
+            },
+            lesson5: {
               started: false,
               completed: false,
               progress: 0,
@@ -235,6 +244,17 @@ const LatinProfiles = (() => {
       quizTotal: 7,
       completedAt: null,
       ...(profile.progress.book1.chapter1.lessons.lesson4 || {})
+    };
+
+    profile.progress.book1.chapter1.lessons.lesson5 = {
+      started: false,
+      completed: false,
+      progress: 0,
+      screen: 0,
+      quizScore: null,
+      quizTotal: 7,
+      completedAt: null,
+      ...(profile.progress.book1.chapter1.lessons.lesson5 || {})
     };
 
     profile.progress.collectibles = Array.isArray(profile.progress.collectibles)
