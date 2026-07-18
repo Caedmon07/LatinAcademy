@@ -89,17 +89,23 @@ const requiredFiles = [
   "pages/book1/lesson-1.html",
   "pages/book1/lesson-2.html",
   "pages/book1/lesson-3.html",
+  "pages/book1/lesson-4.html",
+  "pages/book1/lesson-5.html",
+  "pages/book1/lesson-6.html",
   "static/book1.css",
   "static/book1-chapter.js",
   "static/lesson-engine.js",
+  "static/lesson-common.js",
   "static/lesson-2.js",
   "static/lesson-3.js",
+  "static/lesson-4.js",
   "static/runtime.js",
   "content/book1/course.json",
   "content/book1/chapter-01.json",
   "content/book1/lesson-01.json",
   "content/book1/lesson-02.json",
-  "content/book1/lesson-03.json"
+  "content/book1/lesson-03.json",
+  "content/book1/lesson-04.json"
 ];
 
 for (const required of requiredFiles) {

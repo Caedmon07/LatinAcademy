@@ -7,7 +7,8 @@ const counter = document.getElementById("screenCounter");
 const progressBar = document.getElementById("lessonProgressBar");
 const progressText = document.getElementById("lessonProgressText");
 const navigation = document.getElementById("lessonNavigation");
-const audio = new Audio();
+const lessonAudio = LatinLessonCommon.createAudioController("../../assets/audio/latin/book1");
+const audio = lessonAudio.audio;
 
 let currentScreen = 0;
 let quizPassed = false;
@@ -155,10 +156,7 @@ function saveLesson2(updates) {
 }
 
 function playClip(filename) {
-  audio.pause();
-  audio.currentTime = 0;
-  audio.src = `../../assets/audio/latin/book1/${filename}`;
-  audio.play().catch(() => {});
+  return lessonAudio.play(filename);
 }
 
 function showScreen(index, options = {}) {
@@ -235,7 +233,7 @@ function renderEndingMatch() {
     `Choose the ending meaning “${item.meaning}”.`;
   document.getElementById("endingMatchFeedback").textContent = "";
 
-  const shuffled = [...endings].sort(() => Math.random() - 0.5);
+  const shuffled = LatinLessonCommon.shuffle(endings);
   const bank = document.getElementById("endingMatchBank");
   bank.innerHTML = shuffled.map((ending) => `
     <button type="button" data-ending="${ending.ending}">-${ending.ending}</button>
@@ -278,7 +276,7 @@ function renderWorkshop() {
   document.getElementById("workshopSlot").textContent = "?";
   document.getElementById("workshopFeedback").textContent = "";
 
-  const options = [...endings].sort(() => Math.random() - 0.5);
+  const options = LatinLessonCommon.shuffle(endings);
   const bank = document.getElementById("workshopBank");
   bank.innerHTML = options.map((item) => `
     <button type="button" data-ending="${item.ending}">-${item.ending}</button>
@@ -369,33 +367,14 @@ function renderQuiz() {
 }
 
 function playClipAndWait(filename) {
-  return new Promise((resolve) => {
-    audio.pause();
-    audio.currentTime = 0;
-    audio.src = `../../assets/audio/latin/book1/${filename}`;
-
-    const finish = () => {
-      audio.removeEventListener("ended", finish);
-      audio.removeEventListener("error", finish);
-      resolve();
-    };
-
-    audio.addEventListener("ended", finish, { once: true });
-    audio.addEventListener("error", finish, { once: true });
-    audio.play().catch(finish);
-  });
+  return lessonAudio.playAndWait(filename);
 }
 
 document.getElementById("playAmoPattern").addEventListener("click", async (event) => {
   const button = event.currentTarget;
   button.disabled = true;
   button.textContent = "🔊 Playing amō, amās, amat, amāmus, amātis, amant…";
-
-  for (const filename of verbs.amo.audio) {
-    await playClipAndWait(filename);
-    await new Promise((resolve) => setTimeout(resolve, 120));
-  }
-
+  await lessonAudio.playSequence(verbs.amo.audio, 120);
   button.disabled = false;
   button.innerHTML = "🔊 Hear the pattern with <i>amō</i>";
 });

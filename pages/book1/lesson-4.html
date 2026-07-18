@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 4: Principal Parts | Latin Academy</title>
+  <link rel="stylesheet" href="../../static/styles.css?v=1.3.0">
+  <link rel="stylesheet" href="../../static/book1.css?v=1.3.0">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="../../index.html"><span class="brand-mark">LA</span><span><strong>Latin Academy</strong><small>Book I · Chapter 1</small></span></a>
+  <nav><a href="chapter1.html">Chapter</a><a href="../../index.html">Home</a><button class="profile-button" type="button" data-profile-menu-button data-profile-href="../profiles.html" data-active-profile-avatar>🦁</button></nav>
+</header>
+
+<div class="lesson-coursebar">
+  <a href="chapter1.html">← Chapter 1</a>
+  <div class="lesson-progress-track"><span id="lessonProgressBar"></span></div>
+  <strong id="lessonProgressText">0%</strong>
+  <a href="../../index.html">Save and exit</a>
+</div>
+
+<div class="lesson-gate" id="lesson4Gate" hidden>
+  <div><p class="eyebrow">LESSON LOCKED</p><h1>Complete Lesson 3 first</h1><p>Principal parts build on your understanding of present, future and imperfect forms.</p><a class="button primary" href="lesson-3.html">Open Lesson 3</a><a class="button secondary" href="chapter1.html">Return to chapter</a></div>
+</div>
+
+<main class="interactive-lesson" id="interactiveLesson">
+  <section class="lesson-screen active" data-screen="0">
+    <div class="welcome-screen">
+      <p class="eyebrow">BOOK I · CHAPTER 1 · LESSON 4</p>
+      <h1>Principal Parts</h1>
+      <p>Latin verbs are learned through a small set of key forms. These forms provide the stems needed to build the wider verb system.</p>
+      <div class="lesson-facts"><span>⏱ About 18 minutes</span><span>⭐ 50 XP</span><span>📜 Four key forms</span></div>
+      <button class="button primary next-screen" type="button">Begin lesson</button>
+    </div>
+  </section>
+
+  <section class="lesson-screen" data-screen="1">
+    <div class="screen-heading"><p class="eyebrow">1 · WHY FOUR FORMS?</p><h2>A verb has more than one useful stem</h2><p>The dictionary form alone cannot supply every tense. Principal parts act like a compact construction kit.</p></div>
+    <div class="principal-purpose-grid">
+      <article><span>1</span><h3>Present meaning</h3><p><i>amō</i> tells you the basic meaning: “I love”.</p></article>
+      <article><span>2</span><h3>Present system</h3><p><i>amāre</i> supplies the present stem <i>amā-</i>.</p></article>
+      <article><span>3</span><h3>Perfect system</h3><p><i>amāvī</i> supplies the perfect stem <i>amāv-</i>.</p></article>
+      <article><span>4</span><h3>Later constructions</h3><p><i>amātum</i> supplies a further stem used later.</p></article>
+    </div>
+  </section>
+
+  <section class="lesson-screen" data-screen="2">
+    <div class="screen-heading"><p class="eyebrow">2 · MEET THE FOUR PARTS</p><h2><i>amō, amāre, amāvī, amātum</i></h2><p>Listen to each form and learn what information it provides.</p></div>
+    <div class="principal-parts" id="principalParts"></div>
+    <div class="pattern-chant"><p class="card-label">FULL SEQUENCE</p><strong>amō · amāre · amāvī · amātum</strong><button type="button" id="playPrincipalSequence">🔊 Hear all four parts</button></div>
+  </section>
+
+  <section class="lesson-screen" data-screen="3">
+    <div class="screen-heading"><p class="eyebrow">3 · FIND THE PRESENT STEM</p><h2>Use the second principal part</h2><p>Remove <i>-re</i> from the infinitive to reveal the present stem.</p></div>
+    <div class="stem-equation"><strong>amāre</strong><span>− re</span><strong class="stem-result">amā-</strong></div>
+    <div class="quick-check"><p>Which form gives the present stem of <i>nāvigō</i>?</p><div class="choice-row" data-question="present-part"><button data-answer="1">nāvigō</button><button data-answer="2">nāvigāre</button><button data-answer="3">nāvigāvī</button></div><p class="inline-feedback" id="presentPartFeedback"></p></div>
+  </section>
+
+  <section class="lesson-screen" data-screen="4">
+    <div class="screen-heading"><p class="eyebrow">4 · FIND THE PERFECT STEM</p><h2>Use the third principal part</h2><p>Remove final <i>-ī</i> from the third principal part.</p></div>
+    <div class="stem-equation"><strong>amāvī</strong><span>− ī</span><strong class="stem-result">amāv-</strong></div>
+    <div class="quick-check"><p>What is the perfect stem of <i>cantāvī</i>?</p><div class="choice-row" data-question="perfect-stem"><button data-answer="canta">cantā-</button><button data-answer="cantav">cantāv-</button><button data-answer="cantavi">cantāvī-</button></div><p class="inline-feedback" id="perfectStemFeedback"></p></div>
+  </section>
+
+  <section class="lesson-screen" data-screen="5">
+    <div class="screen-heading"><p class="eyebrow">5 · THE REGULAR PATTERN</p><h2>One pattern, many verbs</h2><p>Regular first-conjugation verbs commonly follow <strong>-ō, -āre, -āvī, -ātum</strong>.</p></div>
+    <div class="verb-selector">
+      <button class="active" data-principal-verb="navigo">nāvigō · sail</button>
+      <button data-principal-verb="canto">cantō · sing</button>
+      <button data-principal-verb="aedifico">aedificō · build</button>
+    </div>
+    <div class="principal-example" id="principalExample"></div>
+  </section>
+
+  <section class="lesson-screen" data-screen="6">
+    <div class="screen-heading"><p class="eyebrow">6 · ORDER THE PARTS</p><h2>Put the forms in dictionary order</h2><p id="orderPrompt">Choose the first principal part.</p></div>
+    <div class="order-game"><div class="ordered-slots" id="orderedSlots"></div><div class="ending-bank" id="orderBank"></div><p class="inline-feedback" id="orderFeedback"></p><div class="builder-score"><span id="orderScore">0</span> / 4 placed</div></div>
+  </section>
+
+  <section class="lesson-screen" data-screen="7">
+    <div class="screen-heading"><p class="eyebrow">7 · BUILD PRINCIPAL PARTS</p><h2>Complete regular verb sets</h2><p id="partsBuilderPrompt">Choose the missing form.</p></div>
+    <div class="parts-builder">
+      <div class="parts-sequence" id="partsSequence"></div>
+      <div class="choice-row" id="partsChoices"></div>
+      <p class="inline-feedback" id="partsFeedback"></p>
+      <div class="builder-score"><span id="partsScore">0</span> / 6 completed</div>
+    </div>
+  </section>
+
+  <section class="lesson-screen" data-screen="8">
+    <div class="screen-heading"><p class="eyebrow">8 · LESSON SUMMARY</p><h2>Your four-part toolkit</h2></div>
+    <div class="summary-points">
+      <p>✓ First part: first-person singular present — <i>amō</i>.</p>
+      <p>✓ Second part: present infinitive — <i>amāre</i>.</p>
+      <p>✓ Third part: first-person singular perfect — <i>amāvī</i>.</p>
+      <p>✓ Fourth part: supine — <i>amātum</i>.</p>
+      <p>✓ Regular pattern: <strong>-ō, -āre, -āvī, -ātum</strong>.</p>
+    </div>
+  </section>
+
+  <section class="lesson-screen" data-screen="9">
+    <div class="screen-heading"><p class="eyebrow">FINAL CHECK</p><h2>Lesson 4 quiz</h2><p>Score at least 6 out of 7 to complete the lesson.</p></div>
+    <form id="lesson4Quiz" class="book-quiz"></form>
+    <div class="quiz-result" id="lesson4QuizResult" hidden></div>
+  </section>
+
+  <section class="lesson-screen" data-screen="10">
+    <div class="completion-celebration">
+      <span class="completion-icon">📜</span><p class="eyebrow">LESSON COMPLETE</p><h2>Four-Part Scholar</h2>
+      <p id="lesson4CompletionMessage">You can identify the four principal parts and derive their key stems.</p>
+      <div class="completion-stats"><article><strong>+50</strong><span>XP</span></article><article><strong id="lesson4FinalScore">0/7</strong><span>Quiz score</span></article><article><strong>4</strong><span>Principal parts</span></article></div>
+      <div class="completion-actions"><a class="button secondary" href="chapter1.html">Return to Chapter 1</a><a class="button primary" href="lesson-5.html">Preview Lesson 5</a></div>
+    </div>
+  </section>
+</main>
+
+<div class="lesson-navigation" id="lessonNavigation"><button id="previousScreen" type="button">Back</button><span id="screenCounter">1 / 11</span><button id="nextScreen" type="button">Continue</button></div>
+<script src="../../static/profiles.js?v=1.3.0"></script>
+<script src="../../static/lesson-common.js?v=1.3.0"></script>
+<script src="../../static/lesson-4.js?v=1.3.0"></script>
+<script src="../../static/runtime.js?v=1.3.0"></script>
+</body>
+</html>

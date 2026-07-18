@@ -1,4 +1,4 @@
-# Latin Academy v1.2
+# Latin Academy v1.3
 
 Latin Academy is a static family-learning website for introductory Latin.
 Version 1.0 adds the first Book I chapter experience and the first reusable,
@@ -261,3 +261,61 @@ Thirty-six additional local prototype audio clips are stored under
 - Fixed the nāvigat translation answer by using explicit English answers rather than mechanically combining pronouns and dictionary meanings.
 - Added Lesson 3: Future and Imperfect.
 - Added future and imperfect pattern audio, tense sorting, builders, translation practice, nōn/et/sed, a seven-question quiz, 45 XP and the Latin Time Traveller achievement.
+
+
+## v1.2.1 Lesson framework refactor
+
+### Bug fix
+
+The future-form builder displayed the correct instruction at the top of the
+screen but left the previous task's meaning above the large Latin stem. The
+builder now updates both labels whenever it advances to a new task.
+
+### Refactor
+
+A shared browser utility has been added at:
+
+```text
+static/lesson-common.js
+```
+
+It centralises reusable lesson behaviour:
+
+- audio playback;
+- reliable sequential audio playback;
+- option shuffling;
+- choice-state handling;
+- reusable quiz rendering and scoring;
+- reusable screen-navigation support.
+
+Lessons 2 and 3 now use the shared audio and shuffle utilities. This removes
+duplicated playback code and prevents future audio-sequence implementations
+from relying on arbitrary timers.
+
+### Regression checks
+
+```text
+scripts/test-lessons.mjs
+```
+
+This checks the previously reported `nāvigat` answer, sequential `amō` audio,
+and both visible meaning labels in the Lesson 3 tense builders.
+
+
+## v1.3 Book I Lesson 4
+
+Lesson 4, **Principal Parts**, introduces the four key forms used to learn and
+construct Latin verbs:
+
+```text
+amō · amāre · amāvī · amātum
+```
+
+The lesson includes principal-part audio, present- and perfect-stem derivation,
+regular-pattern examples, ordering practice, six missing-form exercises, a
+seven-question quiz, 50 XP and the **Four-Part Scholar** achievement.
+
+Placeholder pages and chapter-path entries have also been added for:
+
+- Lesson 5 — The Perfect Tense
+- Lesson 6 — Vocabulary and Chapter Review

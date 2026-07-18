@@ -1,0 +1,85 @@
+{
+  "id": "book1-ch1-lesson4",
+  "title": "Principal Parts",
+  "chapter": "Book I · Chapter 1",
+  "estimatedMinutes": 18,
+  "rewardXp": 50,
+  "prerequisite": "book1-ch1-lesson3",
+  "achievement": {
+    "id": "four-part-scholar",
+    "title": "Four-Part Scholar",
+    "description": "Identified the four principal parts of a regular first-conjugation verb.",
+    "icon": "📜"
+  },
+  "objectives": [
+    "understand why Latin verbs are learned through principal parts",
+    "identify the four principal parts of amō",
+    "derive the present and perfect stems",
+    "recognise the present infinitive",
+    "construct principal parts for regular first-conjugation verbs"
+  ],
+  "principalParts": [
+    {
+      "number": 1,
+      "form": "amō",
+      "meaning": "I love",
+      "purpose": "present meaning and dictionary form"
+    },
+    {
+      "number": 2,
+      "form": "amāre",
+      "meaning": "to love",
+      "purpose": "present infinitive and present stem"
+    },
+    {
+      "number": 3,
+      "form": "amāvī",
+      "meaning": "I have loved",
+      "purpose": "perfect stem"
+    },
+    {
+      "number": 4,
+      "form": "amātum",
+      "meaning": "to love / in order to love",
+      "purpose": "supine stem used later in the course"
+    }
+  ],
+  "regularPattern": [
+    "-ō",
+    "-āre",
+    "-āvī",
+    "-ātum"
+  ],
+  "examples": [
+    {
+      "verb": "nāvigō",
+      "parts": [
+        "nāvigō",
+        "nāvigāre",
+        "nāvigāvī",
+        "nāvigātum"
+      ],
+      "meaning": "sail"
+    },
+    {
+      "verb": "cantō",
+      "parts": [
+        "cantō",
+        "cantāre",
+        "cantāvī",
+        "cantātum"
+      ],
+      "meaning": "sing"
+    },
+    {
+      "verb": "aedificō",
+      "parts": [
+        "aedificō",
+        "aedificāre",
+        "aedificāvī",
+        "aedificātum"
+      ],
+      "meaning": "build"
+    }
+  ]
+}

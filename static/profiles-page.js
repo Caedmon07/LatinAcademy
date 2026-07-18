@@ -72,6 +72,12 @@ function renderDashboard() {
     quizScore: null,
     quizTotal: 7
   };
+  const book1Lesson4 = progress.book1?.chapter1?.lessons?.lesson4 || {
+    progress: 0,
+    completed: false,
+    quizScore: null,
+    quizTotal: 7
+  };
 
   document.getElementById("lessonProgress").innerHTML = `
     <article class="lesson-progress-card">
@@ -114,6 +120,17 @@ function renderDashboard() {
             ? "Future and Imperfect · Ready"
             : "Future and Imperfect · Locked"}</p>
       <div class="profile-progress-track"><span style="width:${book1Lesson3.progress || 0}%"></span></div>
+    </article>
+    <article class="lesson-progress-card">
+      <header><strong>Book I · Lesson 4</strong><span>${book1Lesson4.progress || 0}%</span></header>
+      <p>${book1Lesson4.completed
+        ? `Completed · Quiz ${book1Lesson4.quizScore}/${book1Lesson4.quizTotal || 7}`
+        : book1Lesson4.started
+          ? "Principal Parts · In progress"
+          : book1Lesson3.completed
+            ? "Principal Parts · Ready"
+            : "Principal Parts · Locked"}</p>
+      <div class="profile-progress-track"><span style="width:${book1Lesson4.progress || 0}%"></span></div>
     </article>
   `;
 

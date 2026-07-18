@@ -63,6 +63,7 @@ function renderBookOneAccess(profile) {
   const lesson1 = chapter1.lessons?.lesson1 || {};
   const lesson2 = chapter1.lessons?.lesson2 || {};
   const lesson3 = chapter1.lessons?.lesson3 || {};
+  const lesson4 = chapter1.lessons?.lesson4 || {};
 
   const card = document.getElementById("book1CourseCard");
   const status = document.getElementById("book1Status");
@@ -85,10 +86,18 @@ function renderBookOneAccess(profile) {
   action.removeAttribute("aria-disabled");
   action.style.pointerEvents = "auto";
 
-  if (lesson3.completed) {
-    status.textContent = "Lessons 1–3 complete";
+  if (lesson4.completed) {
+    status.textContent = "Lessons 1–4 complete";
     status.className = "status available";
     action.textContent = "Review Chapter 1 →";
+  } else if (lesson4.started) {
+    status.textContent = "Lesson 4 in progress";
+    status.className = "status available";
+    action.textContent = "Continue Lesson 4 →";
+  } else if (lesson3.completed) {
+    status.textContent = "Lesson 4 unlocked";
+    status.className = "status available";
+    action.textContent = "Start Lesson 4 →";
   } else if (lesson3.started) {
     status.textContent = "Lesson 3 in progress";
     status.className = "status available";

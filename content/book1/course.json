@@ -32,6 +32,30 @@
           "estimatedMinutes": 18,
           "xp": 45,
           "status": "available-after-lesson2"
+        },
+        {
+          "id": "book1-ch1-lesson4",
+          "title": "Principal Parts",
+          "page": "pages/book1/lesson-4.html",
+          "estimatedMinutes": 18,
+          "xp": 50,
+          "status": "available-after-lesson3"
+        },
+        {
+          "id": "book1-ch1-lesson5",
+          "title": "The Perfect Tense",
+          "page": "pages/book1/lesson-5.html",
+          "estimatedMinutes": 18,
+          "xp": 55,
+          "status": "placeholder"
+        },
+        {
+          "id": "book1-ch1-lesson6",
+          "title": "Vocabulary and Chapter Review",
+          "page": "pages/book1/lesson-6.html",
+          "estimatedMinutes": 20,
+          "xp": 60,
+          "status": "placeholder"
         }
       ]
     }
